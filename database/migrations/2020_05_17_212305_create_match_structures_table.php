@@ -27,6 +27,7 @@ class CreateMatchStructuresTable extends Migration
             $table->tinyInteger('principal');
             $table->tinyInteger('halftime');
             $table->string('type', 10);
+            $table->json('main_bet_types')->nullable();
             $table->timestamps();
         });
     }
