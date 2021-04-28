@@ -1,19 +1,18 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        
-
         \DB::table('users')->delete();
         
         \DB::table('users')->insert(array (
@@ -93,7 +92,5 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2020-10-01 05:45:07',
             ),
         ));
-        
-        
     }
 }

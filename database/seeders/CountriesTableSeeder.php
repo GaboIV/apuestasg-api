@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('countries')->delete();
-
+        
         \DB::table('countries')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'acro_2' => 'AD',
@@ -30,7 +32,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'acro_2' => 'AE',
@@ -43,7 +45,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'acro_2' => 'AF',
@@ -56,7 +58,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-13 16:08:15',
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'acro_2' => 'AG',
@@ -69,7 +71,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 5,
                 'acro_2' => 'AI',
@@ -82,7 +84,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 6,
                 'acro_2' => 'AL',
@@ -95,7 +97,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 7,
                 'acro_2' => 'AM',
@@ -108,7 +110,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 8,
                 'acro_2' => 'AN',
@@ -121,7 +123,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 9,
                 'acro_2' => 'AO',
@@ -134,7 +136,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 10,
                 'acro_2' => 'AQ',
@@ -147,7 +149,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 11,
                 'acro_2' => 'AR',
@@ -160,7 +162,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-07 19:48:49',
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 12,
                 'acro_2' => 'AS',
@@ -173,7 +175,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 13,
                 'acro_2' => 'AT',
@@ -186,7 +188,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-26 16:56:44',
             ),
-            13 =>
+            13 => 
             array (
                 'id' => 14,
                 'acro_2' => 'AU',
@@ -199,7 +201,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-27 13:58:23',
             ),
-            14 =>
+            14 => 
             array (
                 'id' => 15,
                 'acro_2' => 'AW',
@@ -212,7 +214,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 =>
+            15 => 
             array (
                 'id' => 16,
                 'acro_2' => 'AX',
@@ -225,7 +227,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 =>
+            16 => 
             array (
                 'id' => 17,
                 'acro_2' => 'AZ',
@@ -238,7 +240,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 =>
+            17 => 
             array (
                 'id' => 18,
                 'acro_2' => 'BA',
@@ -251,7 +253,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-16 20:07:27',
             ),
-            18 =>
+            18 => 
             array (
                 'id' => 19,
                 'acro_2' => 'BB',
@@ -264,7 +266,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 =>
+            19 => 
             array (
                 'id' => 20,
                 'acro_2' => 'BD',
@@ -277,7 +279,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            20 =>
+            20 => 
             array (
                 'id' => 21,
                 'acro_2' => 'BE',
@@ -290,7 +292,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-21 18:52:38',
             ),
-            21 =>
+            21 => 
             array (
                 'id' => 22,
                 'acro_2' => 'BF',
@@ -303,7 +305,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            22 =>
+            22 => 
             array (
                 'id' => 23,
                 'acro_2' => 'BG',
@@ -316,7 +318,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-13 16:35:46',
             ),
-            23 =>
+            23 => 
             array (
                 'id' => 24,
                 'acro_2' => 'BH',
@@ -329,7 +331,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            24 =>
+            24 => 
             array (
                 'id' => 25,
                 'acro_2' => 'BI',
@@ -342,7 +344,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            25 =>
+            25 => 
             array (
                 'id' => 26,
                 'acro_2' => 'BJ',
@@ -355,7 +357,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            26 =>
+            26 => 
             array (
                 'id' => 27,
                 'acro_2' => 'BL',
@@ -368,7 +370,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            27 =>
+            27 => 
             array (
                 'id' => 28,
                 'acro_2' => 'BM',
@@ -381,7 +383,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            28 =>
+            28 => 
             array (
                 'id' => 29,
                 'acro_2' => 'BN',
@@ -394,7 +396,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            29 =>
+            29 => 
             array (
                 'id' => 30,
                 'acro_2' => 'BO',
@@ -407,7 +409,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            30 =>
+            30 => 
             array (
                 'id' => 31,
                 'acro_2' => 'BR',
@@ -420,7 +422,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-27 13:59:04',
             ),
-            31 =>
+            31 => 
             array (
                 'id' => 32,
                 'acro_2' => 'BS',
@@ -433,7 +435,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            32 =>
+            32 => 
             array (
                 'id' => 33,
                 'acro_2' => 'BT',
@@ -446,7 +448,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            33 =>
+            33 => 
             array (
                 'id' => 34,
                 'acro_2' => 'BV',
@@ -459,7 +461,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            34 =>
+            34 => 
             array (
                 'id' => 35,
                 'acro_2' => 'BW',
@@ -472,7 +474,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            35 =>
+            35 => 
             array (
                 'id' => 36,
                 'acro_2' => 'BY',
@@ -485,7 +487,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-21 18:51:52',
             ),
-            36 =>
+            36 => 
             array (
                 'id' => 37,
                 'acro_2' => 'BZ',
@@ -498,7 +500,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            37 =>
+            37 => 
             array (
                 'id' => 38,
                 'acro_2' => 'CA',
@@ -511,7 +513,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-22 20:04:13',
             ),
-            38 =>
+            38 => 
             array (
                 'id' => 39,
                 'acro_2' => 'CC',
@@ -524,7 +526,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            39 =>
+            39 => 
             array (
                 'id' => 40,
                 'acro_2' => 'CF',
@@ -537,7 +539,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            40 =>
+            40 => 
             array (
                 'id' => 41,
                 'acro_2' => 'CG',
@@ -550,7 +552,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            41 =>
+            41 => 
             array (
                 'id' => 42,
                 'acro_2' => 'CH',
@@ -563,7 +565,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            42 =>
+            42 => 
             array (
                 'id' => 43,
                 'acro_2' => 'CI',
@@ -576,7 +578,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            43 =>
+            43 => 
             array (
                 'id' => 44,
                 'acro_2' => 'CK',
@@ -589,7 +591,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            44 =>
+            44 => 
             array (
                 'id' => 45,
                 'acro_2' => 'CL',
@@ -602,7 +604,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            45 =>
+            45 => 
             array (
                 'id' => 46,
                 'acro_2' => 'CM',
@@ -615,7 +617,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            46 =>
+            46 => 
             array (
                 'id' => 47,
                 'acro_2' => 'CN',
@@ -628,7 +630,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            47 =>
+            47 => 
             array (
                 'id' => 48,
                 'acro_2' => 'CO',
@@ -641,7 +643,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            48 =>
+            48 => 
             array (
                 'id' => 49,
                 'acro_2' => 'CR',
@@ -654,7 +656,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            49 =>
+            49 => 
             array (
                 'id' => 50,
                 'acro_2' => 'CU',
@@ -667,7 +669,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            50 =>
+            50 => 
             array (
                 'id' => 51,
                 'acro_2' => 'CV',
@@ -680,7 +682,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            51 =>
+            51 => 
             array (
                 'id' => 52,
                 'acro_2' => 'CX',
@@ -693,7 +695,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            52 =>
+            52 => 
             array (
                 'id' => 53,
                 'acro_2' => 'CY',
@@ -706,7 +708,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            53 =>
+            53 => 
             array (
                 'id' => 54,
                 'acro_2' => 'CZ',
@@ -719,7 +721,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-07 20:03:42',
             ),
-            54 =>
+            54 => 
             array (
                 'id' => 55,
                 'acro_2' => 'DE',
@@ -732,7 +734,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-13 16:35:30',
             ),
-            55 =>
+            55 => 
             array (
                 'id' => 56,
                 'acro_2' => 'DJ',
@@ -745,7 +747,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            56 =>
+            56 => 
             array (
                 'id' => 57,
                 'acro_2' => 'DK',
@@ -758,7 +760,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            57 =>
+            57 => 
             array (
                 'id' => 58,
                 'acro_2' => 'DM',
@@ -771,7 +773,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            58 =>
+            58 => 
             array (
                 'id' => 59,
                 'acro_2' => 'DO',
@@ -784,7 +786,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-22 19:18:47',
             ),
-            59 =>
+            59 => 
             array (
                 'id' => 60,
                 'acro_2' => 'DZ',
@@ -797,7 +799,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            60 =>
+            60 => 
             array (
                 'id' => 61,
                 'acro_2' => 'EC',
@@ -810,7 +812,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            61 =>
+            61 => 
             array (
                 'id' => 62,
                 'acro_2' => 'EE',
@@ -823,7 +825,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            62 =>
+            62 => 
             array (
                 'id' => 63,
                 'acro_2' => 'EG',
@@ -836,7 +838,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            63 =>
+            63 => 
             array (
                 'id' => 64,
                 'acro_2' => 'EH',
@@ -849,7 +851,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            64 =>
+            64 => 
             array (
                 'id' => 65,
                 'acro_2' => 'ER',
@@ -862,7 +864,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            65 =>
+            65 => 
             array (
                 'id' => 66,
                 'acro_2' => 'ES',
@@ -875,7 +877,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-08 08:40:26',
             ),
-            66 =>
+            66 => 
             array (
                 'id' => 67,
                 'acro_2' => 'ET',
@@ -888,7 +890,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            67 =>
+            67 => 
             array (
                 'id' => 68,
                 'acro_2' => 'FI',
@@ -901,7 +903,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            68 =>
+            68 => 
             array (
                 'id' => 69,
                 'acro_2' => 'FJ',
@@ -914,7 +916,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            69 =>
+            69 => 
             array (
                 'id' => 70,
                 'acro_2' => 'FK',
@@ -927,7 +929,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            70 =>
+            70 => 
             array (
                 'id' => 71,
                 'acro_2' => 'FM',
@@ -940,7 +942,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            71 =>
+            71 => 
             array (
                 'id' => 72,
                 'acro_2' => 'FO',
@@ -953,7 +955,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            72 =>
+            72 => 
             array (
                 'id' => 73,
                 'acro_2' => 'FR',
@@ -966,7 +968,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            73 =>
+            73 => 
             array (
                 'id' => 74,
                 'acro_2' => 'GA',
@@ -979,7 +981,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            74 =>
+            74 => 
             array (
                 'id' => 75,
                 'acro_2' => 'GB',
@@ -992,7 +994,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-22 19:39:00',
             ),
-            75 =>
+            75 => 
             array (
                 'id' => 76,
                 'acro_2' => 'GD',
@@ -1005,7 +1007,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            76 =>
+            76 => 
             array (
                 'id' => 77,
                 'acro_2' => 'GE',
@@ -1018,7 +1020,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            77 =>
+            77 => 
             array (
                 'id' => 78,
                 'acro_2' => 'GF',
@@ -1031,7 +1033,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            78 =>
+            78 => 
             array (
                 'id' => 79,
                 'acro_2' => 'GG',
@@ -1044,7 +1046,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            79 =>
+            79 => 
             array (
                 'id' => 80,
                 'acro_2' => 'GH',
@@ -1057,7 +1059,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            80 =>
+            80 => 
             array (
                 'id' => 81,
                 'acro_2' => 'GI',
@@ -1070,7 +1072,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            81 =>
+            81 => 
             array (
                 'id' => 82,
                 'acro_2' => 'GL',
@@ -1083,7 +1085,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            82 =>
+            82 => 
             array (
                 'id' => 83,
                 'acro_2' => 'GM',
@@ -1096,7 +1098,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            83 =>
+            83 => 
             array (
                 'id' => 84,
                 'acro_2' => 'GN',
@@ -1109,7 +1111,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            84 =>
+            84 => 
             array (
                 'id' => 85,
                 'acro_2' => 'GP',
@@ -1122,7 +1124,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            85 =>
+            85 => 
             array (
                 'id' => 86,
                 'acro_2' => 'GQ',
@@ -1135,7 +1137,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            86 =>
+            86 => 
             array (
                 'id' => 87,
                 'acro_2' => 'GR',
@@ -1148,7 +1150,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-08 08:48:31',
             ),
-            87 =>
+            87 => 
             array (
                 'id' => 88,
                 'acro_2' => 'GS',
@@ -1161,7 +1163,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            88 =>
+            88 => 
             array (
                 'id' => 89,
                 'acro_2' => 'GT',
@@ -1174,7 +1176,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            89 =>
+            89 => 
             array (
                 'id' => 90,
                 'acro_2' => 'GU',
@@ -1187,7 +1189,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            90 =>
+            90 => 
             array (
                 'id' => 91,
                 'acro_2' => 'GW',
@@ -1200,7 +1202,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            91 =>
+            91 => 
             array (
                 'id' => 92,
                 'acro_2' => 'GY',
@@ -1213,7 +1215,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            92 =>
+            92 => 
             array (
                 'id' => 93,
                 'acro_2' => 'HK',
@@ -1226,7 +1228,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            93 =>
+            93 => 
             array (
                 'id' => 94,
                 'acro_2' => 'HM',
@@ -1239,7 +1241,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            94 =>
+            94 => 
             array (
                 'id' => 95,
                 'acro_2' => 'HN',
@@ -1252,7 +1254,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            95 =>
+            95 => 
             array (
                 'id' => 96,
                 'acro_2' => 'HR',
@@ -1265,7 +1267,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-27 13:56:58',
             ),
-            96 =>
+            96 => 
             array (
                 'id' => 97,
                 'acro_2' => 'HT',
@@ -1278,7 +1280,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            97 =>
+            97 => 
             array (
                 'id' => 98,
                 'acro_2' => 'HU',
@@ -1291,7 +1293,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            98 =>
+            98 => 
             array (
                 'id' => 99,
                 'acro_2' => 'ID',
@@ -1304,7 +1306,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            99 =>
+            99 => 
             array (
                 'id' => 100,
                 'acro_2' => 'IE',
@@ -1319,7 +1321,7 @@ class CountriesTableSeeder extends Seeder
             ),
         ));
         \DB::table('countries')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 101,
                 'acro_2' => 'IL',
@@ -1332,7 +1334,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 102,
                 'acro_2' => 'IM',
@@ -1345,7 +1347,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 103,
                 'acro_2' => 'IN',
@@ -1358,7 +1360,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 104,
                 'acro_2' => 'EN',
@@ -1371,7 +1373,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 105,
                 'acro_2' => 'IQ',
@@ -1384,7 +1386,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 106,
                 'acro_2' => 'IR',
@@ -1397,7 +1399,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 107,
                 'acro_2' => 'IS',
@@ -1410,7 +1412,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 108,
                 'acro_2' => 'IT',
@@ -1423,7 +1425,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-06 06:12:40',
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 109,
                 'acro_2' => 'JE',
@@ -1436,7 +1438,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 110,
                 'acro_2' => 'JM',
@@ -1449,7 +1451,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 111,
                 'acro_2' => 'JO',
@@ -1462,7 +1464,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 112,
                 'acro_2' => 'JP',
@@ -1475,7 +1477,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-26 16:56:22',
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 113,
                 'acro_2' => 'KE',
@@ -1488,7 +1490,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 =>
+            13 => 
             array (
                 'id' => 114,
                 'acro_2' => 'KG',
@@ -1501,7 +1503,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 =>
+            14 => 
             array (
                 'id' => 115,
                 'acro_2' => 'KH',
@@ -1514,7 +1516,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 =>
+            15 => 
             array (
                 'id' => 116,
                 'acro_2' => 'KI',
@@ -1527,7 +1529,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 =>
+            16 => 
             array (
                 'id' => 117,
                 'acro_2' => 'KM',
@@ -1540,7 +1542,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 =>
+            17 => 
             array (
                 'id' => 118,
                 'acro_2' => 'KN',
@@ -1553,7 +1555,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            18 =>
+            18 => 
             array (
                 'id' => 119,
                 'acro_2' => 'KP',
@@ -1566,7 +1568,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 =>
+            19 => 
             array (
                 'id' => 120,
                 'acro_2' => 'KR',
@@ -1579,7 +1581,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            20 =>
+            20 => 
             array (
                 'id' => 121,
                 'acro_2' => 'KW',
@@ -1592,7 +1594,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            21 =>
+            21 => 
             array (
                 'id' => 122,
                 'acro_2' => 'KY',
@@ -1605,7 +1607,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            22 =>
+            22 => 
             array (
                 'id' => 123,
                 'acro_2' => 'KZ',
@@ -1618,7 +1620,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            23 =>
+            23 => 
             array (
                 'id' => 124,
                 'acro_2' => 'LA',
@@ -1631,7 +1633,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            24 =>
+            24 => 
             array (
                 'id' => 125,
                 'acro_2' => 'LB',
@@ -1644,7 +1646,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            25 =>
+            25 => 
             array (
                 'id' => 126,
                 'acro_2' => 'LC',
@@ -1657,7 +1659,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            26 =>
+            26 => 
             array (
                 'id' => 127,
                 'acro_2' => 'LI',
@@ -1670,7 +1672,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            27 =>
+            27 => 
             array (
                 'id' => 128,
                 'acro_2' => 'LK',
@@ -1683,7 +1685,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            28 =>
+            28 => 
             array (
                 'id' => 129,
                 'acro_2' => 'LR',
@@ -1696,7 +1698,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            29 =>
+            29 => 
             array (
                 'id' => 130,
                 'acro_2' => 'LS',
@@ -1709,7 +1711,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            30 =>
+            30 => 
             array (
                 'id' => 131,
                 'acro_2' => 'LT',
@@ -1722,7 +1724,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            31 =>
+            31 => 
             array (
                 'id' => 132,
                 'acro_2' => 'LU',
@@ -1735,7 +1737,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            32 =>
+            32 => 
             array (
                 'id' => 133,
                 'acro_2' => 'LV',
@@ -1748,7 +1750,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-21 18:52:54',
             ),
-            33 =>
+            33 => 
             array (
                 'id' => 134,
                 'acro_2' => 'LY',
@@ -1761,7 +1763,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            34 =>
+            34 => 
             array (
                 'id' => 135,
                 'acro_2' => 'MA',
@@ -1774,7 +1776,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            35 =>
+            35 => 
             array (
                 'id' => 136,
                 'acro_2' => 'MC',
@@ -1787,7 +1789,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            36 =>
+            36 => 
             array (
                 'id' => 137,
                 'acro_2' => 'MD',
@@ -1800,7 +1802,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            37 =>
+            37 => 
             array (
                 'id' => 138,
                 'acro_2' => 'ME',
@@ -1813,7 +1815,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            38 =>
+            38 => 
             array (
                 'id' => 139,
                 'acro_2' => 'MG',
@@ -1826,7 +1828,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            39 =>
+            39 => 
             array (
                 'id' => 140,
                 'acro_2' => 'MH',
@@ -1839,7 +1841,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            40 =>
+            40 => 
             array (
                 'id' => 141,
                 'acro_2' => 'MK',
@@ -1852,7 +1854,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            41 =>
+            41 => 
             array (
                 'id' => 142,
                 'acro_2' => 'ML',
@@ -1865,7 +1867,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            42 =>
+            42 => 
             array (
                 'id' => 143,
                 'acro_2' => 'MM',
@@ -1878,7 +1880,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            43 =>
+            43 => 
             array (
                 'id' => 144,
                 'acro_2' => 'MN',
@@ -1891,7 +1893,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            44 =>
+            44 => 
             array (
                 'id' => 145,
                 'acro_2' => 'MO',
@@ -1904,7 +1906,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            45 =>
+            45 => 
             array (
                 'id' => 146,
                 'acro_2' => 'MQ',
@@ -1917,7 +1919,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            46 =>
+            46 => 
             array (
                 'id' => 147,
                 'acro_2' => 'MR',
@@ -1930,7 +1932,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            47 =>
+            47 => 
             array (
                 'id' => 148,
                 'acro_2' => 'MS',
@@ -1943,7 +1945,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            48 =>
+            48 => 
             array (
                 'id' => 149,
                 'acro_2' => 'MT',
@@ -1956,7 +1958,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            49 =>
+            49 => 
             array (
                 'id' => 150,
                 'acro_2' => 'MU',
@@ -1969,7 +1971,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            50 =>
+            50 => 
             array (
                 'id' => 151,
                 'acro_2' => 'MV',
@@ -1982,7 +1984,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            51 =>
+            51 => 
             array (
                 'id' => 152,
                 'acro_2' => 'MW',
@@ -1995,7 +1997,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            52 =>
+            52 => 
             array (
                 'id' => 153,
                 'acro_2' => 'MX',
@@ -2008,7 +2010,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            53 =>
+            53 => 
             array (
                 'id' => 154,
                 'acro_2' => 'MY',
@@ -2021,7 +2023,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            54 =>
+            54 => 
             array (
                 'id' => 155,
                 'acro_2' => 'MZ',
@@ -2034,7 +2036,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            55 =>
+            55 => 
             array (
                 'id' => 156,
                 'acro_2' => 'NA',
@@ -2047,7 +2049,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            56 =>
+            56 => 
             array (
                 'id' => 157,
                 'acro_2' => 'NC',
@@ -2060,7 +2062,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            57 =>
+            57 => 
             array (
                 'id' => 158,
                 'acro_2' => 'NE',
@@ -2073,7 +2075,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            58 =>
+            58 => 
             array (
                 'id' => 159,
                 'acro_2' => 'NF',
@@ -2086,7 +2088,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            59 =>
+            59 => 
             array (
                 'id' => 160,
                 'acro_2' => 'NG',
@@ -2099,7 +2101,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            60 =>
+            60 => 
             array (
                 'id' => 161,
                 'acro_2' => 'NI',
@@ -2112,7 +2114,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            61 =>
+            61 => 
             array (
                 'id' => 162,
                 'acro_2' => 'NL',
@@ -2125,7 +2127,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            62 =>
+            62 => 
             array (
                 'id' => 163,
                 'acro_2' => 'NO',
@@ -2138,7 +2140,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            63 =>
+            63 => 
             array (
                 'id' => 164,
                 'acro_2' => 'NP',
@@ -2151,7 +2153,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            64 =>
+            64 => 
             array (
                 'id' => 165,
                 'acro_2' => 'NR',
@@ -2164,7 +2166,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            65 =>
+            65 => 
             array (
                 'id' => 166,
                 'acro_2' => 'NU',
@@ -2177,7 +2179,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            66 =>
+            66 => 
             array (
                 'id' => 167,
                 'acro_2' => 'NZ',
@@ -2190,7 +2192,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            67 =>
+            67 => 
             array (
                 'id' => 168,
                 'acro_2' => 'OM',
@@ -2203,7 +2205,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            68 =>
+            68 => 
             array (
                 'id' => 169,
                 'acro_2' => 'PA',
@@ -2216,7 +2218,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            69 =>
+            69 => 
             array (
                 'id' => 170,
                 'acro_2' => 'PE',
@@ -2229,7 +2231,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            70 =>
+            70 => 
             array (
                 'id' => 171,
                 'acro_2' => 'PF',
@@ -2242,7 +2244,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            71 =>
+            71 => 
             array (
                 'id' => 172,
                 'acro_2' => 'PG',
@@ -2255,7 +2257,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            72 =>
+            72 => 
             array (
                 'id' => 173,
                 'acro_2' => 'PH',
@@ -2268,7 +2270,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            73 =>
+            73 => 
             array (
                 'id' => 174,
                 'acro_2' => 'PK',
@@ -2281,7 +2283,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            74 =>
+            74 => 
             array (
                 'id' => 175,
                 'acro_2' => 'PL',
@@ -2294,7 +2296,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-07 20:01:31',
             ),
-            75 =>
+            75 => 
             array (
                 'id' => 176,
                 'acro_2' => 'PM',
@@ -2307,7 +2309,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            76 =>
+            76 => 
             array (
                 'id' => 177,
                 'acro_2' => 'PN',
@@ -2320,7 +2322,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            77 =>
+            77 => 
             array (
                 'id' => 178,
                 'acro_2' => 'PR',
@@ -2333,7 +2335,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            78 =>
+            78 => 
             array (
                 'id' => 179,
                 'acro_2' => 'PS',
@@ -2346,7 +2348,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            79 =>
+            79 => 
             array (
                 'id' => 180,
                 'acro_2' => 'PT',
@@ -2359,7 +2361,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            80 =>
+            80 => 
             array (
                 'id' => 181,
                 'acro_2' => 'PW',
@@ -2372,7 +2374,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            81 =>
+            81 => 
             array (
                 'id' => 182,
                 'acro_2' => 'PY',
@@ -2385,7 +2387,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            82 =>
+            82 => 
             array (
                 'id' => 183,
                 'acro_2' => 'QA',
@@ -2398,7 +2400,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            83 =>
+            83 => 
             array (
                 'id' => 184,
                 'acro_2' => 'RE',
@@ -2411,7 +2413,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            84 =>
+            84 => 
             array (
                 'id' => 185,
                 'acro_2' => 'RO',
@@ -2424,7 +2426,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            85 =>
+            85 => 
             array (
                 'id' => 186,
                 'acro_2' => 'RS',
@@ -2437,7 +2439,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-08 08:40:59',
             ),
-            86 =>
+            86 => 
             array (
                 'id' => 187,
                 'acro_2' => 'RU',
@@ -2450,7 +2452,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-21 18:50:36',
             ),
-            87 =>
+            87 => 
             array (
                 'id' => 188,
                 'acro_2' => 'RW',
@@ -2463,7 +2465,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            88 =>
+            88 => 
             array (
                 'id' => 189,
                 'acro_2' => 'SA',
@@ -2476,7 +2478,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            89 =>
+            89 => 
             array (
                 'id' => 190,
                 'acro_2' => 'SB',
@@ -2489,7 +2491,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            90 =>
+            90 => 
             array (
                 'id' => 191,
                 'acro_2' => 'SC',
@@ -2502,7 +2504,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            91 =>
+            91 => 
             array (
                 'id' => 192,
                 'acro_2' => 'SD',
@@ -2515,7 +2517,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            92 =>
+            92 => 
             array (
                 'id' => 193,
                 'acro_2' => 'SE',
@@ -2528,7 +2530,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            93 =>
+            93 => 
             array (
                 'id' => 194,
                 'acro_2' => 'SG',
@@ -2541,7 +2543,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            94 =>
+            94 => 
             array (
                 'id' => 195,
                 'acro_2' => 'SH',
@@ -2554,7 +2556,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            95 =>
+            95 => 
             array (
                 'id' => 196,
                 'acro_2' => 'SI',
@@ -2567,7 +2569,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-16 20:02:38',
             ),
-            96 =>
+            96 => 
             array (
                 'id' => 197,
                 'acro_2' => 'SJ',
@@ -2580,7 +2582,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            97 =>
+            97 => 
             array (
                 'id' => 198,
                 'acro_2' => 'SK',
@@ -2593,7 +2595,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            98 =>
+            98 => 
             array (
                 'id' => 199,
                 'acro_2' => 'SL',
@@ -2606,7 +2608,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            99 =>
+            99 => 
             array (
                 'id' => 200,
                 'acro_2' => 'SM',
@@ -2621,7 +2623,7 @@ class CountriesTableSeeder extends Seeder
             ),
         ));
         \DB::table('countries')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 201,
                 'acro_2' => 'SN',
@@ -2634,7 +2636,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 202,
                 'acro_2' => 'SO',
@@ -2647,7 +2649,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 203,
                 'acro_2' => 'SR',
@@ -2660,7 +2662,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 204,
                 'acro_2' => 'ST',
@@ -2673,7 +2675,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 205,
                 'acro_2' => 'SV',
@@ -2686,7 +2688,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 206,
                 'acro_2' => 'SY',
@@ -2699,7 +2701,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 207,
                 'acro_2' => 'SZ',
@@ -2712,7 +2714,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 208,
                 'acro_2' => 'TC',
@@ -2725,7 +2727,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 209,
                 'acro_2' => 'TD',
@@ -2738,7 +2740,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 210,
                 'acro_2' => 'TF',
@@ -2751,7 +2753,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 211,
                 'acro_2' => 'TG',
@@ -2764,7 +2766,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 212,
                 'acro_2' => 'TH',
@@ -2777,7 +2779,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 213,
                 'acro_2' => 'TZ',
@@ -2790,7 +2792,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 =>
+            13 => 
             array (
                 'id' => 214,
                 'acro_2' => 'TJ',
@@ -2803,7 +2805,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 =>
+            14 => 
             array (
                 'id' => 215,
                 'acro_2' => 'TK',
@@ -2816,7 +2818,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 =>
+            15 => 
             array (
                 'id' => 216,
                 'acro_2' => 'TL',
@@ -2829,7 +2831,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 =>
+            16 => 
             array (
                 'id' => 217,
                 'acro_2' => 'TM',
@@ -2842,7 +2844,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 =>
+            17 => 
             array (
                 'id' => 218,
                 'acro_2' => 'TN',
@@ -2855,7 +2857,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-21 18:53:13',
             ),
-            18 =>
+            18 => 
             array (
                 'id' => 219,
                 'acro_2' => 'TO',
@@ -2868,7 +2870,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 =>
+            19 => 
             array (
                 'id' => 220,
                 'acro_2' => 'TR',
@@ -2881,7 +2883,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-06-16 20:53:11',
             ),
-            20 =>
+            20 => 
             array (
                 'id' => 221,
                 'acro_2' => 'TT',
@@ -2894,7 +2896,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            21 =>
+            21 => 
             array (
                 'id' => 222,
                 'acro_2' => 'TV',
@@ -2907,7 +2909,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            22 =>
+            22 => 
             array (
                 'id' => 223,
                 'acro_2' => 'TW',
@@ -2920,7 +2922,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            23 =>
+            23 => 
             array (
                 'id' => 224,
                 'acro_2' => 'UA',
@@ -2933,7 +2935,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            24 =>
+            24 => 
             array (
                 'id' => 225,
                 'acro_2' => 'UG',
@@ -2946,7 +2948,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            25 =>
+            25 => 
             array (
                 'id' => 226,
                 'acro_2' => 'US',
@@ -2959,7 +2961,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2020-10-07 19:47:49',
             ),
-            26 =>
+            26 => 
             array (
                 'id' => 227,
                 'acro_2' => 'UY',
@@ -2972,7 +2974,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            27 =>
+            27 => 
             array (
                 'id' => 228,
                 'acro_2' => 'UZ',
@@ -2985,7 +2987,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            28 =>
+            28 => 
             array (
                 'id' => 229,
                 'acro_2' => 'VA',
@@ -2998,7 +3000,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            29 =>
+            29 => 
             array (
                 'id' => 230,
                 'acro_2' => 'VC',
@@ -3011,7 +3013,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            30 =>
+            30 => 
             array (
                 'id' => 231,
                 'acro_2' => 'VE',
@@ -3024,7 +3026,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            31 =>
+            31 => 
             array (
                 'id' => 232,
                 'acro_2' => 'VG',
@@ -3037,7 +3039,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            32 =>
+            32 => 
             array (
                 'id' => 233,
                 'acro_2' => 'VI',
@@ -3050,7 +3052,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            33 =>
+            33 => 
             array (
                 'id' => 234,
                 'acro_2' => 'VN',
@@ -3063,7 +3065,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            34 =>
+            34 => 
             array (
                 'id' => 235,
                 'acro_2' => 'VU',
@@ -3076,7 +3078,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            35 =>
+            35 => 
             array (
                 'id' => 236,
                 'acro_2' => 'WF',
@@ -3089,7 +3091,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            36 =>
+            36 => 
             array (
                 'id' => 237,
                 'acro_2' => 'WS',
@@ -3102,7 +3104,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            37 =>
+            37 => 
             array (
                 'id' => 238,
                 'acro_2' => 'YE',
@@ -3115,7 +3117,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            38 =>
+            38 => 
             array (
                 'id' => 239,
                 'acro_2' => 'YT',
@@ -3128,7 +3130,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            39 =>
+            39 => 
             array (
                 'id' => 240,
                 'acro_2' => 'ZA',
@@ -3141,7 +3143,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            40 =>
+            40 => 
             array (
                 'id' => 241,
                 'acro_2' => 'IN',
@@ -3154,7 +3156,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            41 =>
+            41 => 
             array (
                 'id' => 242,
                 'acro_2' => 'NA',
@@ -3167,7 +3169,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            42 =>
+            42 => 
             array (
                 'id' => 243,
                 'acro_2' => 'SA',
@@ -3180,7 +3182,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            43 =>
+            43 => 
             array (
                 'id' => 244,
                 'acro_2' => 'EU',
@@ -3193,7 +3195,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            44 =>
+            44 => 
             array (
                 'id' => 245,
                 'acro_2' => 'EU',
@@ -3206,7 +3208,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            45 =>
+            45 => 
             array (
                 'id' => 246,
                 'acro_2' => 'AF',
@@ -3219,7 +3221,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            46 =>
+            46 => 
             array (
                 'id' => 247,
                 'acro_2' => 'OC',
@@ -3232,7 +3234,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            47 =>
+            47 => 
             array (
                 'id' => 248,
                 'acro_2' => 'SC',
@@ -3245,7 +3247,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            48 =>
+            48 => 
             array (
                 'id' => 249,
                 'acro_2' => 'gl',
@@ -3258,7 +3260,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            49 =>
+            49 => 
             array (
                 'id' => 250,
                 'acro_2' => 'ko',
@@ -3271,7 +3273,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            50 =>
+            50 => 
             array (
                 'id' => 251,
                 'acro_2' => 'cn',
@@ -3284,7 +3286,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            51 =>
+            51 => 
             array (
                 'id' => 252,
                 'acro_2' => 'wa',
@@ -3297,7 +3299,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            52 =>
+            52 => 
             array (
                 'id' => 253,
                 'acro_2' => 'in',
@@ -3310,7 +3312,7 @@ class CountriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            53 =>
+            53 => 
             array (
                 'id' => 254,
                 'acro_2' => 'Otros',
@@ -3324,7 +3326,7 @@ class CountriesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-
-
+        
+        
     }
 }
