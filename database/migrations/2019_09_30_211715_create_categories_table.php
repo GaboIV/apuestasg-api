@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('acro_3');
             $table->string('data')->nullable();
             $table->decimal('importance');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
