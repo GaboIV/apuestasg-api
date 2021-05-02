@@ -77,9 +77,9 @@ class LoginController extends ApiController
         }
 
         if ($user->email == 'master@apuestasg.com') {
-            $user->assignRole('admin');
+            $user->assignRole('Administrador');
         } else {
-            $user->assignRole('player');
+            $user->assignRole('Jugador');
         }
 
         if ($user->hasRole('admin')) {
