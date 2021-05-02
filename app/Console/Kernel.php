@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SyncLeagues;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        SyncLeagues::class
     ];
 
     /**
@@ -24,7 +25,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('telescope:prune')->dailyAt('00:00');
+
+        $schedule->command('sync:leagues')->hourly();
+
+        $schedule->command('sync:careers')->dailyAt('03:30');
+
+        $schedule->command('sync:careers')->dailyAt('12:30');
+
+        $schedule->command('promo:hourly')->everyFifteenMinutes();
     }
 
     /**
