@@ -28,7 +28,9 @@ class LeagueController extends ApiController
 
                 $url = 'https://sports.tipico.de/json/program/selectedEvents/all/' . $sync_id . "/?apiVersion=1";
 
-                $response = Http::get($url);
+                $response = Http::withOptions([
+                    'verify' => false,
+                ])->get($url);
 
                 return $response;
 
