@@ -209,7 +209,7 @@ class TicketController extends ApiController
 				            "type" => "ticket-sport"
 				        ]);
 
-						$this->dispatch(new SendSportTicketMailJob($player, $ticketes, $assist));
+						// $this->dispatch(new SendSportTicketMailJob($player, $ticketes, $assist));
 					}
 				}
        		} else {
@@ -341,7 +341,7 @@ class TicketController extends ApiController
 		            "type" => "ticket-hipism"
 		        ]);
 
-				$this->dispatch(new SendHipismTicketMailJob($player, $ticketes, $assist));
+				// $this->dispatch(new SendHipismTicketMailJob($player, $ticketes, $assist));
        		}
        	} else {
        		$response = [
