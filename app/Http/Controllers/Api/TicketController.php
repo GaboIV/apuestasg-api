@@ -46,7 +46,7 @@ class TicketController extends ApiController
 	        	} else {
 	        		$sel->competitor;
 	        	}
-        	}       	
+        	}
         }
 
         return $this->successResponse($ticketes, 200);
@@ -60,15 +60,15 @@ class TicketController extends ApiController
 	    $j = 0;
 	    $m = 0;
 	    $decim_tot = 1;
-	    $cod_serial = substr(md5(rand()),0,10);  
-	    $fecha = date("Y-m-d H:i:s");   
+	    $cod_serial = substr(md5(rand()),0,10);
+	    $fecha = date("Y-m-d H:i:s");
 
-	    $monto = $data['montos']; 
+	    $monto = $data['montos'];
 
        	if ($player->available >= $monto) {
        		$selections = $player->selections;
 
-       		$ticketes[0] = []; 
+       		$ticketes[0] = [];
 
        		if (count($selections) >= 1) {
        			foreach ($selections as $sel) {
@@ -81,7 +81,7 @@ class TicketController extends ApiController
 				        	$league = League::whereId($sel->game->league_id)->first();
 
 				        	$ticketes[0]['selecciones'][$i]['id'] = $sel->id;
-	                        
+
 	                        $ticketes[0]['selecciones'][$i]['liga'] = $league->name;
 
 	                        $ticketes[0]['selecciones'][$i]['start'] = $sel->game->start;
@@ -93,7 +93,7 @@ class TicketController extends ApiController
 			                        $competitor = $comp;
 			                        break;
 			                    }
-			                } 
+			                }
 
 	                        if ($competitor) {
 	                        	$team_id = $competitor->team_id;
@@ -139,12 +139,12 @@ class TicketController extends ApiController
 	                        }
 				        }
 				        $i++;
-				    }			        
+				    }
 	            }
 
 	            $ticket_id = DB::table('tickets')->insertGetId(
 				    [
-				    	'code' => $cod_serial, 
+				    	'code' => $cod_serial,
 				    	'player_id' => $player->id,
 				    	'amount' => $monto,
 				    	'towin' => $towin,
@@ -159,7 +159,7 @@ class TicketController extends ApiController
 		        	// $selections->ticket_id = $ticket_id;
 		        	// $selections->player_id = $player->id;
 				    foreach ($selections as $sel) {
-				    	$sel->update([				    	
+				    	$sel->update([
 					    	'player_id' => $player->id,
 					    	'ticket_id' => $ticket_id
 					    ]);
@@ -176,7 +176,7 @@ class TicketController extends ApiController
 					$ticketes[0]['a_ganar'] = $towin;
 					$ticketes[0]['id_seleccion'] = $sel['select_id'];
 
-					$nuevo_d = $player->available - $monto; 
+					$nuevo_d = $player->available - $monto;
 
 					$transaction = Transaction::create([
 						"event_type_id" => 1,
@@ -208,9 +208,9 @@ class TicketController extends ApiController
 				            "player_id" => $player->id,
 				            "type" => "ticket-sport"
 				        ]);
-						
+
 						$this->dispatch(new SendSportTicketMailJob($player, $ticketes, $assist));
-					}               
+					}
 				}
        		} else {
        			$response = [
@@ -218,7 +218,7 @@ class TicketController extends ApiController
 		            "ticketes" => null,
 		            "mstatus" => "No posee selecciones para generar un ticket"
 		        ];
-       		}            
+       		}
        	} else {
        		$response = [
 	            "status" => "error",
@@ -237,7 +237,7 @@ class TicketController extends ApiController
         $i = 0;
 	    $j = 0;
 	    $m = 1;
-	    $fecha = date("Y-m-d H:i:s");   
+	    $fecha = date("Y-m-d H:i:s");
 
 	    $monto = explode("#", $data['montos']);
 
@@ -260,7 +260,7 @@ class TicketController extends ApiController
                     	$inscription = Inscription::whereId($sel->select_id)->first();
 
                     	if ($inscription) {
-                    		$ticketes[$i]['selecciones']['inscripcion'] = $inscription; 
+                    		$ticketes[$i]['selecciones']['inscripcion'] = $inscription;
                     		$ticketes[$i]['selecciones']['inscripcion']['carrera'] = $sel['career'];
                     		$ticketes[$i]['selecciones']['inscripcion']['hipodromo'] = $sel['career']['racecourse'];
 
@@ -272,7 +272,7 @@ class TicketController extends ApiController
 
                     		$ticket_id = DB::table('tickets')->insertGetId(
 							    [
-							    	'code' => $cod_serial, 
+							    	'code' => $cod_serial,
 							    	'player_id' => $player->id,
 							    	'amount' => $monto_a,
 							    	'towin' => 0,
@@ -283,10 +283,10 @@ class TicketController extends ApiController
 							);
 
 							if ($ticket_id != 0) {
-						    	$sel->update([				    	
+						    	$sel->update([
 							    	'player_id' => $player->id,
 							    	'ticket_id' => $ticket_id
-							    ]);							    
+							    ]);
 			                }
 
 			                if ($ticket_id) {
@@ -311,15 +311,15 @@ class TicketController extends ApiController
 
 								if ($player->update()) {
 									$disponible = $nuevo_d;
-			                        
-								}               
+
+								}
 							}
                     	}
 
                     	$i++; $m++;
                     } else {
                     	break;
-                    }		        
+                    }
 				}
 
 	            $response = array(
@@ -340,9 +340,9 @@ class TicketController extends ApiController
 		            "player_id" => $player->id,
 		            "type" => "ticket-hipism"
 		        ]);
-				
+
 				$this->dispatch(new SendHipismTicketMailJob($player, $ticketes, $assist));
-       		}            
+       		}
        	} else {
        		$response = [
 	            "status" => "error",
@@ -353,7 +353,7 @@ class TicketController extends ApiController
 
        	return $this->successResponse($response, 200);
 	}
-	
+
 	public function verify (Request $game) {
 		$tickets = Ticket::whereHas('selections', function ($query) use ($game) {
             $query->Where('sample', $game['id'])
@@ -416,7 +416,7 @@ class TicketController extends ApiController
                 ]);
             }
 		}
-		
+
 		return [
 			"Ganadores" => $tickets_to_pay,
 			"Perdedores" => $tickets_failed,

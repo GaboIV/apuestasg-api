@@ -13,9 +13,9 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApiController;
 
-class SessionController extends ApiController 
+class SessionController extends ApiController
 {
-    public function loadSelections() 
+    public function loadSelections()
     {
         $user = Auth::user();
         $player = $user->player;
@@ -43,11 +43,11 @@ class SessionController extends ApiController
                     $selecciones[$i]['hipodromo'] = $sel->career->racecourse->name;
                     $selecciones[$i]['fecha_hora'] = $sel->career->date . " " . $sel->career->time;
                 }
-                $i++; 
+                $i++;
             } else {
                 if ($sel->game->start <= date("Y-m-d H:i:s")) {
                     $sel->delete();
-                } else {                    
+                } else {
                     $tipo = "2x";
 
                     $selecciones[$i]['encuentro'] = $sel->game->encuentro;
@@ -74,15 +74,15 @@ class SessionController extends ApiController
 
                     $decim_tot = $decim_tot * $selections[$i]->value;
 
-                    $selecciones[$i]['id'] = $selections[$i]->id;  
-                    $selecciones[$i]['game_id'] = $selections[$i]->sample;  
-                    $selecciones[$i]['select'] = $selections[$i]->type; 
-                    $selecciones[$i]['value'] = $selections[$i]->value; 
+                    $selecciones[$i]['id'] = $selections[$i]->id;
+                    $selecciones[$i]['game_id'] = $selections[$i]->sample;
+                    $selecciones[$i]['select'] = $selections[$i]->type;
+                    $selecciones[$i]['value'] = $selections[$i]->value;
                     $selecciones[$i]['equipo'] = $selection_name;
-                } 
-                $i++;  
+                }
+                $i++;
             }
-                       
+
         }
 
         return $this->successResponse([
@@ -103,7 +103,7 @@ class SessionController extends ApiController
         $mstatus = '';
         $selecciones = [];
         $tipo = '';
-        
+
         $exists = Selection::whereSelectId($data['bet_id'])
         ->where('type', $data['item_id'])
         ->where('player_id', $player->id)
@@ -116,7 +116,7 @@ class SessionController extends ApiController
 
         if ($exists) {
             $exists->delete();
-            $status= "success"; 
+            $status= "success";
             $mstatus = "Selección eliminada";
         } else {
             $exists1 = Selection::where('player_id', $player->id)
@@ -162,14 +162,14 @@ class SessionController extends ApiController
                     $selection->sample = $game_id;
                     $selection->value = $odd;
                     $selection->category_id = $data['category_id'];
-                    $selection->ticket_id = null;
+                    $selection->ticket_id = 0;
 
                     $player->selections()->save($selection);
 
                     $status = "success";
                     $mstatus = "Selección agregada";
-                } 
-            }                          
+                }
+            }
         }
 
         if ($tipo != '7') {
@@ -204,10 +204,10 @@ class SessionController extends ApiController
                         $selection_name = $sel->game->teams[$selected_item['caption'] - 1]->name;
                     }
 
-                    $selecciones[$i]['id'] = $selections[$i]->id;  
-                    $selecciones[$i]['game_id'] = $selections[$i]->sample;  
-                    $selecciones[$i]['select'] = $selections[$i]->type; 
-                    $selecciones[$i]['value'] = $selections[$i]->value; 
+                    $selecciones[$i]['id'] = $selections[$i]->id;
+                    $selecciones[$i]['game_id'] = $selections[$i]->sample;
+                    $selecciones[$i]['select'] = $selections[$i]->type;
+                    $selecciones[$i]['value'] = $selections[$i]->value;
                     $selecciones[$i]['equipo'] = $selection_name;
 
                     $i++;
@@ -227,10 +227,10 @@ class SessionController extends ApiController
         $user = Auth::user();
         $player = $user->player;
         $data = $request->all();
-        
+
         $selecciones = [];
         $tipo = '';
-        
+
         $exists = Selection::whereSelectId($data['bet_id'])
         ->where('player_id', $player->id)
         ->where(function ($query) {
@@ -242,7 +242,7 @@ class SessionController extends ApiController
 
         if ($exists) {
             $exists->delete();
-            $status= "success"; 
+            $status= "success";
             $mstatus = "Jugada eliminada";
         } else {
             $exists1 = Selection::where('player_id', $player->id)
@@ -282,16 +282,16 @@ class SessionController extends ApiController
                         $selection->sample = $career_id;
                         $selection->type = '7';
                         $selection->value = '1';
-                        $selection->category_id = '7';  
-                        $selection->ticket_id = null;                        
+                        $selection->category_id = '7';
+                        $selection->ticket_id = 0;
 
                         $player->selections()->save($selection);
 
                         $status = "success";
                         $mstatus = "Jugada seleccionada";
-                    } 
-                }                
-            }                          
+                    }
+                }
+            }
         }
 
         if ($tipo != 'x') {
@@ -319,8 +319,8 @@ class SessionController extends ApiController
                     $selecciones[$i]['hipodromo'] = $sel->career->racecourse->name;
                     $selecciones[$i]['fecha_hora'] = $sel->career->posttime;
                 }
-                $i++; 
-            }            
+                $i++;
+            }
         }
 
         return $this->successResponse([
@@ -339,7 +339,7 @@ class SessionController extends ApiController
             $result = array(
                 "status" => 'success',
                 "mstatus" => 'Selecciones eliminadas'
-            ); 
+            );
         } else {
             $select = Selection::find($id);
 
@@ -348,8 +348,8 @@ class SessionController extends ApiController
                     $result = array(
                         "status" => 'success',
                         "mstatus" => 'Selección eliminada'
-                    ); 
-                }; 
+                    );
+                };
             } else {
                 $result = array(
                     "status" => 'error',
@@ -358,7 +358,7 @@ class SessionController extends ApiController
             }
         }
 
-        return $this->successResponse($result, 200);        
+        return $this->successResponse($result, 200);
     }
 
     public function login (LoginRequest $request) {
@@ -370,7 +370,7 @@ class SessionController extends ApiController
             $user = Auth::user();
             $apiToken = 'current';
         } else {
-        	return $this->errorResponse("Acción no permitida.", 403); 
+        	return $this->errorResponse("Acción no permitida.", 403);
         }
 
         if ($user->hasRole('admin')) {
@@ -379,7 +379,7 @@ class SessionController extends ApiController
                 'titulo' => 'Usuarios',
                 'icono' => 'fas fa-users-cog',
                 'data' => 'Ir a Usuarios',
-   
+
                 'link' => 'usuarios'
             ); $o++;
             $menu[$o] = array(
@@ -480,7 +480,7 @@ class SessionController extends ApiController
 
             $o++;
 
-        } elseif ($user->hasRole('player')) {                
+        } elseif ($user->hasRole('player')) {
             $menu[0] = array(
                 'titulo' => 'Mi Cuenta',
                 'icono' => 'fa fa-universal-access',
@@ -556,8 +556,8 @@ class SessionController extends ApiController
             'access_token' => $apiToken,
             'user' => $user,
             'menu' => $menu
-        );        
-        
+        );
+
         return $this->successResponse($data, 200);
     }
 }
