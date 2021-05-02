@@ -245,7 +245,7 @@ class TicketController extends ApiController
        		$selections = Selection::where('player_id', $player->id)
             ->where(function ($query) {
                 $query->where('ticket_id', '0')
-                      ->orWhere('ticket_id', '')
+                      // ->orWhere('ticket_id', '')
                       ->orWhere('ticket_id', null);
             })
             ->with('career')

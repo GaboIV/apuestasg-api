@@ -109,7 +109,7 @@ class SessionController extends ApiController
         ->where('player_id', $player->id)
         ->where(function ($query) {
             $query->where('ticket_id', '0')
-                  ->orWhere('ticket_id', '')
+                  // ->orWhere('ticket_id', '')
                   ->orWhere('ticket_id', null);
         })
         ->first() ?? null;
@@ -122,7 +122,7 @@ class SessionController extends ApiController
             $exists1 = Selection::where('player_id', $player->id)
             ->where(function ($query) {
                 $query->where('ticket_id', '0')
-                      ->orWhere('ticket_id', '')
+                      // ->orWhere('ticket_id', '')
                       ->orWhere('ticket_id', null);
             })
             ->first();
@@ -147,7 +147,7 @@ class SessionController extends ApiController
                 ->where('player_id', $player->id)
                 ->where(function ($query) {
                     $query->where('ticket_id', '0')
-                          ->orWhere('ticket_id', '')
+                          // ->orWhere('ticket_id', '')
                           ->orWhere('ticket_id', null);
                 })
                 ->get();
@@ -235,7 +235,7 @@ class SessionController extends ApiController
         ->where('player_id', $player->id)
         ->where(function ($query) {
             $query->where('ticket_id', '0')
-                  ->orWhere('ticket_id', '')
+                  // ->orWhere('ticket_id', '')
                   ->orWhere('ticket_id', null);
         })
         ->first();
@@ -248,7 +248,7 @@ class SessionController extends ApiController
             $exists1 = Selection::where('player_id', $player->id)
             ->where(function ($query) {
                 $query->where('ticket_id', '0')
-                      ->orWhere('ticket_id', '')
+                      // ->orWhere('ticket_id', '')
                       ->orWhere('ticket_id', null);
             })
             ->first();
@@ -268,7 +268,7 @@ class SessionController extends ApiController
                     ->where('player_id', $player->id)
                     ->where(function ($query) {
                         $query->where('ticket_id', '0')
-                              ->orWhere('ticket_id', '')
+                              // ->orWhere('ticket_id', '')
                               ->orWhere('ticket_id', null);
                     })
                     ->get();
@@ -298,7 +298,7 @@ class SessionController extends ApiController
             $selections = Selection::where('player_id', $player->id)
             ->where(function ($query) {
                 $query->where('ticket_id', '0')
-                      ->orWhere('ticket_id', '')
+                      // ->orWhere('ticket_id', '')
                       ->orWhere('ticket_id', null);
             })
             ->with('career')
