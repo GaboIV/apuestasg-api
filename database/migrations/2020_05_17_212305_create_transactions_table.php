@@ -29,7 +29,7 @@ class CreateTransactionsTable extends Migration
                 ->on('tickets');
             $table->decimal('amount', 17, 2)->nullable(0);
             $table->decimal('player_balance', 17, 2)->nullable(0);
-            $table->unsignedBigInteger('user_admin');
+            $table->unsignedBigInteger('user_admin')->nullable();
             $table->foreign('user_admin')
                 ->references('id')
                 ->on('users');
