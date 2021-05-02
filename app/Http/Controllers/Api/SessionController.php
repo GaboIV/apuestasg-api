@@ -162,7 +162,7 @@ class SessionController extends ApiController
                     $selection->sample = $game_id;
                     $selection->value = $odd;
                     $selection->category_id = $data['category_id'];
-                    $selection->ticket_id = 0;
+                    $selection->ticket_id = null;
 
                     $player->selections()->save($selection);
 
@@ -283,7 +283,7 @@ class SessionController extends ApiController
                         $selection->type = '7';
                         $selection->value = '1';
                         $selection->category_id = '7';
-                        $selection->ticket_id = 0;
+                        $selection->ticket_id = null;
 
                         $player->selections()->save($selection);
 
