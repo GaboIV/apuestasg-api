@@ -32,17 +32,15 @@ class LeagueController extends ApiController
                     'verify' => false,
                 ])->get($url);
 
-                return $response;
+                $data = $response->json()['SELECTION'];
 
-                $data = json_decode($client->request('GET', $url)->getBody())->SELECTION ?? null;
+                $key_sport = key($data['availableMarkets']);
 
-                $key_sport = key($data->availableMarkets);
+                if (isset($data['sports']) && count($data['sports']) > 0 && $key_sport == $data['sports'][0]['sportId']) {
 
-                if (isset($data->sports) && count($data->sports) > 0 && $key_sport == $data->sports[0]->sportId) {
+                    $games = $data['events'];
 
-                    $games = $data->events;
-
-                    $bet_types = $data->availableMarkets->$key_sport;
+                    $bet_types = $data['availableMarkets'][$key_sport];
 
                     foreach ($bet_types as $key => $bt) {
                         $importance = 50;
@@ -61,22 +59,22 @@ class LeagueController extends ApiController
                         $teams = [];
                         $teams_id = [];
 
-                        for ($i=1; isset($game->{"team" . $i}); $i++) {
-                            if ($game->{"team" . $i . "Id"} == 0) {
+                        for ($i=1; isset($game["team" . $i]); $i++) {
+                            if ($game["team" . $i . "Id"] == 0) {
                                 $teams[$i] = Team::firstOrCreate([
-                                    "name_id" => $game->{"team" . $i}
+                                    "name_id" => $game["team" . $i]
                                 ],[
-                                    "web_id" => $game->{"team" . $i . "Id"},
-                                    "name" => $game->{"team" . $i},
-                                    "name_id" => $game->{"team" . $i}
+                                    "web_id" => $game["team" . $i . "Id"],
+                                    "name" => $game["team" . $i],
+                                    "name_id" => $game["team" . $i]
                                 ]);
                             } else {
                                 $teams[$i] = Team::firstOrCreate([
-                                    "web_id" => $game->{"team" . $i . "Id"},
+                                    "web_id" => $game["team" . $i . "Id"],
                                 ],[
-                                    "web_id" => $game->{"team" . $i . "Id"},
-                                    "name" => $game->{"team" . $i},
-                                    "name_id" => $game->{"team" . $i}
+                                    "web_id" => $game["team" . $i . "Id"],
+                                    "name" => $game["team" . $i],
+                                    "name_id" => $game["team" . $i]
                                 ]);
                             }
 
@@ -86,16 +84,16 @@ class LeagueController extends ApiController
                         }
 
                         $match = Game::updateOrCreate([
-                            "web_id" => $game->id,
+                            "web_id" => $game['id'],
                             "league_id" => $league->id,
                         ],[
-                            "start" => date('Y-m-d H:i:s', ($game->eventStartTime / 1000)),
-                            "description" => $game->eventInfo,
+                            "start" => date('Y-m-d H:i:s', ($game['eventStartTime'] / 1000)),
+                            "description" => $game['eventInfo'],
                             "teams_id" => (array) $teams_id,
                         ]);
 
                         if (is_null($match->result)) {
-                            foreach ($data->matchOddGroups->{$game->id} as $key => $option_type) {
+                            foreach ($data['matchOddGroups'][$game['id']] as $key => $option_type) {
 
                                 $bet_type = BetType::whereName($key)->first();
 
@@ -116,11 +114,11 @@ class LeagueController extends ApiController
                                 foreach ($option_type as $key => $option) {
                                     Competitor::updateOrCreate([
                                         "game_id" => $match->id,
-                                        "code" => $option->fixedParamText,
+                                        "code" => $option['fixedParamText'],
                                         "bet_type_id" => $bet_type->id,
                                         "HT" => $ht
                                     ],[
-                                        "data" => $option->results,
+                                        "data" => $option['results'],
                                         "provider" => "tipico"
                                     ]);
                                 }
