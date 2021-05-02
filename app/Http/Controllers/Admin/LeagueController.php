@@ -12,6 +12,7 @@ use App\Competitor;
 use App\Helpers\Functions;
 use App\Jobs\SyncLeagueJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\ApiController;
 
 class LeagueController extends ApiController
@@ -21,40 +22,44 @@ class LeagueController extends ApiController
 
         if ($league->name_uk) {
             foreach ($league->name_uk as $key => $sync_id) {
-                $client = new \GuzzleHttp\Client(['verify' => false, 'headers' => [
-                    'Content-Type' => 'text/plain'
-                ]]);
-    
+                // $client = new \GuzzleHttp\Client(['verify' => false, 'headers' => [
+                //     'Content-Type' => 'text/plain'
+                // ]]);
+
                 $url = 'https://sports.tipico.de/json/program/selectedEvents/all/' . $sync_id . "/?apiVersion=1";
-    
+
+                $response = Http::get($url);
+
+                return $response;
+
                 $data = json_decode($client->request('GET', $url)->getBody())->SELECTION ?? null;
-    
+
                 $key_sport = key($data->availableMarkets);
 
                 if (isset($data->sports) && count($data->sports) > 0 && $key_sport == $data->sports[0]->sportId) {
 
                     $games = $data->events;
-    
+
                     $bet_types = $data->availableMarkets->$key_sport;
-        
+
                     foreach ($bet_types as $key => $bt) {
                         $importance = 50;
-        
+
                         $bet_type = BetType::UpdateOrCreate([
                             "name" => $bt,
                             "category_id" => $league->category_id
                         ],[
                             "importance" => $importance
                         ]);
-        
+
                         $importance--;
                     }
-        
+
                     foreach ($games as $key => $game) {
                         $teams = [];
                         $teams_id = [];
-        
-                        for ($i=1; isset($game->{"team" . $i}); $i++) { 
+
+                        for ($i=1; isset($game->{"team" . $i}); $i++) {
                             if ($game->{"team" . $i . "Id"} == 0) {
                                 $teams[$i] = Team::firstOrCreate([
                                     "name_id" => $game->{"team" . $i}
@@ -74,10 +79,10 @@ class LeagueController extends ApiController
                             }
 
                             $teams_id[] = $teams[$i]->id;
-        
+
                             $teams[$i]->leagues()->syncWithoutDetaching($league->id);
                         }
-        
+
                         $match = Game::updateOrCreate([
                             "web_id" => $game->id,
                             "league_id" => $league->id,
@@ -86,14 +91,14 @@ class LeagueController extends ApiController
                             "description" => $game->eventInfo,
                             "teams_id" => (array) $teams_id,
                         ]);
-        
+
                         if (is_null($match->result)) {
                             foreach ($data->matchOddGroups->{$game->id} as $key => $option_type) {
 
                                 $bet_type = BetType::whereName($key)->first();
-            
+
                                 $ht = null;
-            
+
                                 if (strpos($bet_type->name, 'section-') !== false) {
                                     if (strpos($key, '1.') !== false) {
                                         $ht = 1;
@@ -115,13 +120,13 @@ class LeagueController extends ApiController
                                     ],[
                                         "data" => $option->results,
                                         "provider" => "tipico"
-                                    ]); 
-                                }                                             
+                                    ]);
+                                }
                             }
                         }
                     }
                 }
-            }                
+            }
         }
 
         return $this->successResponse(true, 200);
@@ -169,7 +174,7 @@ class LeagueController extends ApiController
             $leagues = [];
         }
 
-        return $this->successResponse($leagues_db ?? [], 200);        
+        return $this->successResponse($leagues_db ?? [], 200);
     }
 
     public function attachNameUk(Request $request, $id) {
@@ -180,16 +185,16 @@ class LeagueController extends ApiController
         if (isset($league->name_uk)) {
             if (! in_array($data['name_uk'], $league->name_uk)){
                 $arrays_name_uk = array_merge($league->name_uk, [$data['name_uk']]);
-    
+
                 $league->update([
                     "name_uk" => $arrays_name_uk
                 ]);
-            }    
+            }
         } else {
         	$league->update([
                 "name_uk" => [$data['name_uk']]
             ]);
-        }         
+        }
 
         return $this->successResponse([
             'league' => $league
@@ -209,7 +214,7 @@ class LeagueController extends ApiController
             $league->update([
                 "name_uk" => $arr
             ]);
-        }        
+        }
 
         return $this->successResponse([
             'league' => $league
