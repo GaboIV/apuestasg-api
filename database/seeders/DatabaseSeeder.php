@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(BanksTableSeeder::class);        
+        $this->call(BanksTableSeeder::class);
         $this->call(AccountsTableSeeder::class);
 
         $this->call(CountriesTableSeeder::class);
@@ -25,13 +25,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LeaguesTableSeeder::class);
         $this->call(BetTypesTableSeeder::class);
         $this->call(EventTypesTableSeeder::class);
-        $this->call(MatchStructuresTableSeeder::class);        
+        $this->call(MatchStructuresTableSeeder::class);
 
         $this->call(ConfigurationTableSeeder::class);
 
         $this->call(RacecoursesTableSeeder::class);
 
-        $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(PlayersTableSeeder::class);
     }

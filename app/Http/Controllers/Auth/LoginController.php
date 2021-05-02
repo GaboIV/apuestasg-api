@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\ApiController;
-use App\Http\Requests\LoginRequest;
 use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\ApiController;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends ApiController
 {
@@ -77,9 +78,11 @@ class LoginController extends ApiController
         }
 
         if ($user->email == 'master@apuestasg.com') {
-            $user->assignRole('Administrador');
+            $role = Role::firstOrCreate(['name' => 'admin']);
+            $user->assignRole($role->name);
         } else {
-            $user->assignRole('Jugador');
+            $role = Role::firstOrCreate(['name' => 'player']);
+            $user->assignRole($role->name);
         }
 
         if ($user->hasRole('admin')) {

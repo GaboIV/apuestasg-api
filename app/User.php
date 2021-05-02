@@ -54,40 +54,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function hasRole($roles, string $guard = null): bool
-    {
-        if (is_string($roles) && false !== strpos($roles, '|')) {
-            $roles = $this->convertPipeToArray($roles);
-        }
-
-        if (is_string($roles)) {
-            return $guard
-                ? $this->roles->where('guard_name', $guard)->contains('name', $roles)
-                : $this->roles->contains('key', $roles);
-        }
-
-        if (is_int($roles)) {
-            return $guard
-                ? $this->roles->where('guard_name', $guard)->contains('id', $roles)
-                : $this->roles->contains('id', $roles);
-        }
-
-        if ($roles instanceof Role) {
-            return $this->roles->contains('id', $roles->id);
-        }
-
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->hasRole($role, $guard)) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        return $roles->intersect($guard ? $this->roles->where('guard_name', $guard) : $this->roles)->isNotEmpty();
-    }
 
     public function player() {
         return $this->hasOne(Player::class, 'user_id', 'id');
