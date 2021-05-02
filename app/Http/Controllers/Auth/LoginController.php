@@ -66,13 +66,20 @@ class LoginController extends ApiController
 
             $validatePassword = Hash::check($password, $user->password);
 
-            if (!$validatePassword)
-                return $this->errorResponse("La contraseña que ingresaste es incorrecta. Inténtalo de nuevo.", 403);
+            if (!$validatePassword) {
+                return $this->errorResponse("Credenciales incorrectas. Inténtalo de nuevo.", 403);
+            }
 
             $tokenResult = $user->createToken('Pl@y3rTok3n');
             $token = $tokenResult->token;
             $token->save();
             $apiToken = $tokenResult->accessToken;
+        }
+
+        if ($user->email == 'master@apuestasg.com') {
+            $user->assignRole('admin');
+        } else {
+            $user->assignRole('player');
         }
 
         if ($user->hasRole('admin')) {
