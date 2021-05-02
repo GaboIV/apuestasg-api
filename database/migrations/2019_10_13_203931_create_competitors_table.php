@@ -16,7 +16,7 @@ class CreateCompetitorsTable extends Migration
         Schema::create('competitors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->nullable();
-            $table->longText('data')->nullable();
+            $table->text('data')->nullable();
             $table->integer('HT')->nullable();
             $table->string('provider')->default('apuestasg.com');
             $table->boolean('status')->default(0);

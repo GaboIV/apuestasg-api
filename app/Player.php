@@ -28,29 +28,29 @@ class Player extends Model {
     public static $treatments = [self::SENIOR, self::SENIORA, self::MISS, self::MISTER];
 
     protected $fillable = [
-        'user_id', 
-        'document_type', 
-        'document_number', 
-        'name', 
-        'lastname', 
-        'birthday', 
-        'gender', 
-        'city', 
-        'parish', 
-        'phone', 
-        'available', 
-        'risk', 
-        'points', 
-        'country_id', 
+        'user_id',
+        'document_type',
+        'document_number',
+        'name',
+        'lastname',
+        'birthday',
+        'gender',
+        'city',
+        'parish',
+        'phone',
+        'available',
+        'risk',
+        'points',
+        'country_id',
         'state_id',
         'city_id',
         'parish_id',
-        'address', 
-        'browser', 
+        'address',
+        'browser',
         'timezone',
         'format_quot',
         'language_id',
-        'ip', 
+        'ip',
         'treatment'
     ];
 
@@ -79,13 +79,13 @@ class Player extends Model {
         ->orderBy('created_at', 'desc');
     }
 
-    public function getRiskAttribute() { 
+    public function getRiskAttribute() {
         return Ticket::wherePlayerId($this->id)
         ->whereStatus(0)
         ->sum('amount');
     }
 
-    public function getTotalAttribute() { 
+    public function getTotalAttribute() {
         return $this->risk + $this->available;
     }
 
@@ -97,7 +97,7 @@ class Player extends Model {
      * @var array
      */
     protected $dispatchesEvents = [
-        "created" => PlayerCreated::class,
-        "updated" => PlayerUpdated::class
+        // "created" => PlayerCreated::class,
+        // "updated" => PlayerUpdated::class
     ];
 }
