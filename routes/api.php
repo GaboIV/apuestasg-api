@@ -182,4 +182,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 		Route::post('/pays', 'Api\PlayerController@registerPay');
 		Route::get('/pays', 'Api\PlayerController@getPays');
 	});
+
+    Route::get('artisan/{command}/{function}', function ($command, $function) {
+        \Artisan::call($command .  ':' . $function);    
+        dd("Command " . $command .  ':' . $function . " ejecutado");    
+    });
 });

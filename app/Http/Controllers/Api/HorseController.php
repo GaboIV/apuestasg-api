@@ -21,7 +21,7 @@ class HorseController extends ApiController {
         $horses = Horse::where(function($query) use($criterios){
                     if (request()->criterio != 'todos') {
                         foreach($criterios as $keyword) {
-                            $query->orWhere('name', 'LIKE', "%$keyword%");
+                            $query->orWhere('name', 'ILIKE', "%$keyword%");
                         }
                     }                    
                 })

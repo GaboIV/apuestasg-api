@@ -9,13 +9,13 @@ use App\Ticket;
 use App\Result;
 use App\Selection;
 use App\Competitor;
-use App\Helpers\Functions;
 use App\Inscription;
 use App\Transaction;
+use App\Helpers\Functions;
 use Illuminate\Http\Request;
+use App\Jobs\VerifyTicketsJob;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ApiController;
-use App\Jobs\VerifyTicketsJob;
 use Illuminate\Database\Eloquent\Builder;
 
 class ResultController extends ApiController
@@ -43,8 +43,8 @@ class ResultController extends ApiController
 
         if (isset($data['name']) && $data['name'] != '' && $data['name'] != 'todos' && $data['name'] != 'todas') {
             $query->whereHas('teams', function ($queryC) use ($data) {
-                $queryC->Where('name', 'LIKE', "%" . $data['name'] . "%");
-                $queryC->orWhere('name_id', 'LIKE', "%" . $data['name'] . "%");
+                $queryC->Where('name', 'ILIKE', "%" . $data['name'] . "%");
+                $queryC->orWhere('name_id', 'ILIKE', "%" . $data['name'] . "%");
             });
         }
 

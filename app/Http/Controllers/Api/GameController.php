@@ -404,8 +404,8 @@ class GameController extends ApiController
 
         if (isset($data['name']) && $data['name'] != '' && $data['name'] != 'todos' && $data['name'] != 'todas') {
         	$query->whereHas('teams', function ($queryC) use ($data) {
-            	$queryC->Where('name', 'LIKE', "%" . $data['name'] . "%");
-                $queryC->orWhere('name_id', 'LIKE', "%" . $data['name'] . "%");
+            	$queryC->Where('name', 'ILIKE', "%" . $data['name'] . "%");
+                $queryC->orWhere('name_id', 'ILIKE', "%" . $data['name'] . "%");
 			});
         }
 

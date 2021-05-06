@@ -17,11 +17,11 @@ class LeagueController extends ApiController
         $leagues = League::where(function($query) use($criterios){
                     if (request()->criterio != 'todas') {
                         foreach($criterios as $keyword) {
-                            $query->orWhere('name', 'LIKE', "%$keyword%");
-                            $query->orWhere('name_uk', 'LIKE', "%$keyword%");
-                            $query->orWhere('description', 'LIKE', "%$keyword%");
+                            $query->orWhere('name', 'ILIKE', "%$keyword%");
+                            $query->orWhere('name_uk', 'ILIKE', "%$keyword%");
+                            $query->orWhere('description', 'ILIKE', "%$keyword%");
                             $query->orWhereHas('country', function (Builder $query) use ($keyword) {
-                                $query->where('name', 'LIKE', "%$keyword%");
+                                $query->where('name', 'ILIKE', "%$keyword%");
                             });
                         }
                     }                    
