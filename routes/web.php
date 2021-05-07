@@ -12,4 +12,6 @@ Route::any('api/images/{location}/{filename}', function ($location, $filename) {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', function () {
+    return "Hola";   
+});
