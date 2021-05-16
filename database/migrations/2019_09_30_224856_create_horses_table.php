@@ -16,26 +16,26 @@ class CreateHorsesTable extends Migration
     {
         Schema::create('horses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->string('name');
-            $table->enum('sex', Horse::$sexs);
-            $table->enum('breed', Horse::$breeds);
-            $table->string('color');
-            $table->text('jacket_url');
+            $table->enum('sex', Horse::$sexs)->nullable();
+            $table->enum('breed', Horse::$breeds)->nullable();
+            $table->string('color')->nullable();
+            $table->text('jacket_url')->nullable();
             $table->date('birthday')->nullable();
-            $table->unsignedBigInteger('father_id');
+            $table->unsignedBigInteger('father_id')->nullable();
             // $table->foreign('father_id')
             //     ->references('id')
             //     ->on('horses');
-            $table->unsignedBigInteger('mother_id');
+            $table->unsignedBigInteger('mother_id')->nullable();
             // $table->foreign('mother_id')
             //     ->references('id')
             //     ->on('horses');
-            $table->unsignedBigInteger('grandpa');
+            $table->unsignedBigInteger('grandpa')->nullable();
             // $table->foreign('grandpa')
             //     ->references('id')
             //     ->on('horses');
-            $table->unsignedBigInteger('haras_id');
+            $table->unsignedBigInteger('haras_id')->nullable();
             // $table->foreign('haras_id')
             //     ->references('id')
             //     ->on('haras');

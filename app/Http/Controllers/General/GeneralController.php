@@ -28,13 +28,13 @@ class GeneralController extends ApiController {
 
     public function hora() {
     	$fecha = date("Y-m-d H:i:s");
-    	
+
         return $this->successResponse([
             'fecha' => strtotime($fecha)
         ], 200);
     }
 
-    public function showGamesByCategory() {        
+    public function showGamesByCategory() {
         $category = Category::get();
 
         $daynow = date("Y-m-d H:i:s");
@@ -42,7 +42,7 @@ class GeneralController extends ApiController {
         date_add($fecha_manana, date_interval_create_from_date_string('1 days'));
         $fecha_manana = date_format($fecha_manana, 'Y-m-d H:i:s');
 
-        for ($i=0; $i < count($category); $i++) { 
+        for ($i=0; $i < count($category); $i++) {
             if ($category[$i]['id'] == 7) {
                 $juegos = 0;
                 $juegos = Career::where('date', '>=', date("Y-m-d"))->where('posttime', '>=', $daynow)->count();
@@ -54,7 +54,7 @@ class GeneralController extends ApiController {
                 ->join('leagues', 'games.league_id', '=', 'leagues.id')
                 ->select('games.*')
                 ->count();
-            }            
+            }
 
             $category[$i]['juegos'] = $juegos;
         }
@@ -80,7 +80,7 @@ class GeneralController extends ApiController {
         } elseif ($request->radio == 'today') {
             $q->where('start', '<=',date("Y-m-d") . " 23:59");
         }
-        
+
         $juegos = $q->with('competitors.bet_type')
         ->with(array('league.country' => function($query) {
             $query->orderBy('importance', 'DESC');
@@ -107,8 +107,8 @@ class GeneralController extends ApiController {
             if ((date('d', strtotime($juego->start)) - date('d') == 1) && $juego->league_id != $liga_date) {
                 $juego['manana'] = true;
                 $liga_date = $juego->league_id;
-            }          
-        }       
+            }
+        }
 
         return $this->successResponse([
             'juegos' => $juegos
@@ -124,13 +124,13 @@ class GeneralController extends ApiController {
         $criterios = explode(" ", $data['name']);
 
         $juegos = Game::where('start', '>=', date("Y-m-d H:i:s"))
-        ->with('competitors')
+        ->with('competitors.bet_type')
         ->with('league.country')
         ->whereHas('teams', function ($queryC) use ($criterios) {
             foreach($criterios as $keyword) {
                 $queryC->Where('name', 'ILIKE', "%$keyword%");
                 $queryC->orWhere('name_id', 'ILIKE', "%$keyword%");
-            }           
+            }
         })
         ->orderBy('league_id', 'desc')
         ->orderBy('start', 'asc')
@@ -141,7 +141,7 @@ class GeneralController extends ApiController {
             if ($juego->league_id != $liga_name){
                 $liga_name = $juego->league_id;
                 $juego['league_name'] = $juego->league->name;
-            } 
+            }
         }
 
         return $this->successResponse([
@@ -161,7 +161,7 @@ class GeneralController extends ApiController {
         ->with('league')
         ->with('teams.country')
         ->limit(15)
-        ->orderBy('start', 'asc')  
+        ->orderBy('start', 'asc')
         ->get();
 
         return $this->successResponse([
@@ -169,7 +169,7 @@ class GeneralController extends ApiController {
         ], 200);
     }
 
-    public function GamesByLeague($id) 
+    public function GamesByLeague($id)
     {
         $league = League::whereId($id)->with('category')->first(['id', 'name', 'category_id']);
 
@@ -195,13 +195,13 @@ class GeneralController extends ApiController {
 					 $query->select('id', 'name', 'image_link');
 				 }])
                  ->whereLeagueId($id)
-                 ->orderBy('start', 'asc')  
+                 ->orderBy('start', 'asc')
                  ->limit(50)
                  ->select('id', 'start', 'league_id', 'teams_id')
                  ->get();
 
 
-        
+
         foreach ($games as $key => $game) {
         	$options = [];
 
@@ -232,7 +232,7 @@ class GeneralController extends ApiController {
         	unset($game->competitors);
         	$game->options = $options;
         }
-        
+
 
         return $this->successResponse([
             'league_id' => $id,
@@ -244,11 +244,11 @@ class GeneralController extends ApiController {
 
     public function imageUploadPost(Request $request) {
         $data = $request->all();
-  
-        $imageName = $data['id'].'.png'; 
-   
-        $request->image->move(storage_path('app/' . $data['model']), $imageName); 
-        
+
+        $imageName = $data['id'].'.png';
+
+        $request->image->move(storage_path('app/' . $data['model']), $imageName);
+
         return $this->successResponse([
             'image' => $imageName
         ], 200);
@@ -288,18 +288,18 @@ class GeneralController extends ApiController {
             $query->whereRacecourseId($id);
         }
 
-        
+
         $careers = Cache::remember('careers' . '_' . $id, 60, function () use ($query, $indice, $indice2, $i) {
-            $careers = $query->get();   
-            
-            foreach ($careers as $car) {   
-                $carreras[] = $car;       
+            $careers = $query->get();
+
+            foreach ($careers as $car) {
+                $carreras[] = $car;
                 if ($car->racecourse->id != $indice OR ((new \DateTime($car->date . " " . $car->time))->diff(new \DateTime($indice2))->days > 0)) {
                     $indice = $car->racecourse->id;
                     $indice2 = $car->date;
-    
+
                     $carreras[$i]['div'] = $car->racecourse->name." > ".$car->date;
-    
+
                     $fecha[] = array(
                         'dia' => $car->dia,
                         'hip' => $car->racecourse->id
@@ -316,9 +316,9 @@ class GeneralController extends ApiController {
                 'time' => date("Y-m-d H:i:s"),
             ], 200);
         });
-        
+
         return $careers;
-        
+
     }
 
     public function getRacecourses() {
@@ -327,7 +327,7 @@ class GeneralController extends ApiController {
         $indice2 = '';
         $carreras = [];
         $fecha_for_1 = date("Y-m-d H:i:s");
-        $fecha = [];        
+        $fecha = [];
 
         $value = Cache::remember('users', 60, function () use ($fecha_for_1) {
             return Racecourse::whereHas('careers', function (Builder $query) use ($fecha_for_1) {
@@ -340,6 +340,6 @@ class GeneralController extends ApiController {
                     ->get();
         });
 
-        return RacecourseResource::collection($value);  
-    }   
+        return RacecourseResource::collection($value);
+    }
 }

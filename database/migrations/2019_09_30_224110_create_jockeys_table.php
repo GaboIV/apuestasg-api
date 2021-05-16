@@ -16,10 +16,10 @@ class CreateJockeysTable extends Migration
         Schema::create('jockeys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('name_id');
-            $table->decimal('weight');
-            $table->decimal('height');
-            $table->unsignedBigInteger('country_id');
+            $table->string('name_id')->nullable();
+            $table->decimal('weight')->nullable();
+            $table->decimal('height')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->foreign('country_id')
                 ->references('id')
                 ->on('countries');

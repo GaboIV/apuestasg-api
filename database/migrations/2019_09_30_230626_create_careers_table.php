@@ -27,12 +27,12 @@ class CreateCareersTable extends Migration
             $table->integer('distance')->nullable();
             $table->integer('number');
             $table->integer('valid')->nullable();
-            $table->integer('surface')->nullable();
+            $table->string('surface')->nullable();
             $table->decimal('purse', 15, 2)->nullable();
-            $table->string('grade', 20)->nullable();
-            $table->string('age_restriction', 20)->nullable();
-            $table->string('sex_restriction', 20)->nullable();
-            $table->string('record', 20)->nullable();
+            $table->string('grade', 191)->nullable();
+            $table->string('age_restriction', 191)->nullable();
+            $table->string('sex_restriction', 191)->nullable();
+            $table->string('record', 191)->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });

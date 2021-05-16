@@ -23,22 +23,22 @@ class CreateInscriptionsTable extends Migration
             $table->foreign('horse_id')
                 ->references('id')
                 ->on('horses');
-            $table->unsignedBigInteger('jockey_id');
+            $table->unsignedBigInteger('jockey_id')->nullable();
             $table->foreign('jockey_id')
                 ->references('id')
                 ->on('jockeys');
-            $table->unsignedBigInteger('trainer_id');
+            $table->unsignedBigInteger('trainer_id')->nullable();
             $table->foreign('trainer_id')
                 ->references('id')
                 ->on('trainers');
-            $table->json('studs');
-            $table->decimal('weight');
-            $table->string('medicines');
-            $table->string('implements');
-            $table->string('number');
-            $table->string('position');
-            $table->boolean('status');
-            $table->string('odd', 50);
+            $table->json('studs')->nullable();
+            $table->decimal('weight')->nullable();
+            $table->string('medicines')->nullable();
+            $table->string('implements')->nullable();
+            $table->string('number')->nullable();
+            $table->string('position')->nullable();
+            $table->tinyInteger('status')->nullable();
+            $table->string('odd', 50)->nullable();
             $table->timestamps();
         });
     }
