@@ -128,8 +128,8 @@ class GeneralController extends ApiController {
         ->with('league.country')
         ->whereHas('teams', function ($queryC) use ($criterios) {
             foreach($criterios as $keyword) {
-                $queryC->Where('name', 'ILIKE', "%$keyword%");
-                $queryC->orWhere('name_id', 'ILIKE', "%$keyword%");
+                $queryC->Where('name', 'like', "%$keyword%");
+                $queryC->orWhere('name_id', 'like', "%$keyword%");
             }
         })
         ->orderBy('league_id', 'desc')

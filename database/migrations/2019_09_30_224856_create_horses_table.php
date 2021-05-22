@@ -18,8 +18,8 @@ class CreateHorsesTable extends Migration
             $table->bigIncrements('id');
             $table->string('code')->nullable();
             $table->string('name');
-            $table->enum('sex', Horse::$sexs)->nullable();
-            $table->enum('breed', Horse::$breeds)->nullable();
+            $table->string('sex')->nullable();
+            $table->string('breed')->nullable();
             $table->string('color')->nullable();
             $table->text('jacket_url')->nullable();
             $table->date('birthday')->nullable();
