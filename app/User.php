@@ -13,7 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, HasRoles;
 
-    protected $with = ["player"];
+    // protected $with = ["player"];
 
     /**
      * The attributes that are mass assignable.
@@ -21,11 +21,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nick', 
-        'email', 
-        'password', 
-        'status', 
-        'attemps', 
+        'nick',
+        'email',
+        'password',
+        'status',
+        'attemps',
         'web',
         'code_security'
     ];
@@ -57,6 +57,10 @@ class User extends Authenticatable
 
     public function player() {
         return $this->hasOne(Player::class, 'user_id', 'id');
+    }
+
+    public function admin() {
+        return $this->hasOne(Admin::class, 'user_id', 'id');
     }
 
     /**

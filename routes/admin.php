@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin'], function () {
-    
+// AUTH
+Route::group(['prefix' => 'auth'], function () {
+    // LOGIN
+    Route::post('/login', 'Auth\LoginController@loginAdmin');
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+    // GET USER AUTH
+    Route::get('/me', 'Admin\AdminController@me');
 });

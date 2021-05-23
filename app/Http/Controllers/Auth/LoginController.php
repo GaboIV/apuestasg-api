@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ApiController;
+use App\Http\Requests\Auth\LoginAdminRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends ApiController
@@ -284,6 +285,55 @@ class LoginController extends ApiController
         );
 
         // $this->sendMessage('Hola Carmen, se ha iniciado sesión correctamente en Apuestas G. A ganar.', "+51924407604");
+
+        return $this->successResponse($data, 200);
+    }
+
+    public function loginAdmin(LoginAdminRequest $request)
+    {
+        $data = $request->validated();
+
+        $email = $data['email'];
+        $password = $request['password'];
+
+        $user = User::where('email', $email)->with('admin')->first();
+
+        if (!$user) {
+            return $this->errorResponse("No existe usuario con estas credenciales", 403);
+        }
+
+        if (!$user->status) {
+            return $this->errorResponse("Su cuenta se encuentra inhabiltada.", 403);
+        }
+
+        if ($user->email == 'admin@apuestasg.win') {
+            $role = Role::firstOrCreate(['name' => 'admin']);
+            $user->assignRole($role->name);
+        }
+
+        if (!$user->hasRole('admin')) {
+            if (!$user->hasRole('player')) {
+                return $this->errorResponse("Usuario identificado como jugador, acceso sólo para administradores. Acceso denegado.", 403);
+            }
+
+            return $this->errorResponse("Acceso denegado.", 403);
+        }
+
+        $validatePassword = Hash::check($password, $user->password);
+
+        if (!$validatePassword) {
+            return $this->errorResponse("Credenciales incorrectas. Inténtalo de nuevo.", 403);
+        }
+
+        $tokenResult = $user->createToken('ADMIN!!!!RDFTok3n');
+        $token = $tokenResult->token;
+        $token->save();
+        $apiToken = $tokenResult->accessToken;
+
+        $data = array(
+            'access_token' => $apiToken,
+            'user' => $user
+        );
 
         return $this->successResponse($data, 200);
     }

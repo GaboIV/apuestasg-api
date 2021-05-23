@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
+use App\Country;
 use App\Category;
 use App\Changelog;
-use App\Country;
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ApiController;
 
 class AdminController extends ApiController {
+
+    public function me()
+    {
+        $auth_user = Auth::user();
+        $user = User::where('id', $auth_user->id)->with('admin')->first();
+        return $this->successResponse($user, 200);
+    }
+
     public function loadCategories() {
         $categories = Category::orderBy('name', 'asc')
         					  ->get();
