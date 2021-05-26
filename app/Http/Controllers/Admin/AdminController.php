@@ -15,7 +15,12 @@ class AdminController extends ApiController {
     public function me()
     {
         $auth_user = Auth::user();
-        $user = User::where('id', $auth_user->id)->with('admin')->first();
+
+        $user = User::where('id', $auth_user->id)
+        ->with('admin')
+        ->with('roles')
+        ->first();
+
         return $this->successResponse($user, 200);
     }
 
