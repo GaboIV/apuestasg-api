@@ -29,4 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/me', 'Admin\AdminController@me');
 
     Route::put('/me/personal-information', 'Admin\AdminController@updatePersonalInformation');
+    Route::put('/me/personal-address', 'Admin\AdminController@updatePersonalAddress');
+    Route::put('/me/account-information', 'Admin\AdminController@updateAccountInformation');
+    Route::put('/me/change-password', 'Admin\AdminController@updatePassword');
 });

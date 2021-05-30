@@ -45,7 +45,7 @@ class Admin extends Model {
         'address',
         'browser',
         'timezone',
-        'language_id',
+        'language',
         'ip',
         'treatment'
     ];
