@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\User;
 use App\Country;
 use App\Category;
@@ -9,6 +10,7 @@ use App\Changelog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApiController;
+use App\Http\Requests\Admin\PersonalInformationRequest;
 
 class AdminController extends ApiController {
 
@@ -20,6 +22,16 @@ class AdminController extends ApiController {
         ->with('admin')
         ->with('roles')
         ->first();
+
+        return $this->successResponse($user, 200);
+    }
+
+    public function updatePersonalInformation(PersonalInformationRequest $request)
+    {
+        $data = $request->validated();
+        $auth_user = Auth::user();
+
+        $user = Admin::where('user_id', $auth_user->id)->update($data);
 
         return $this->successResponse($user, 200);
     }

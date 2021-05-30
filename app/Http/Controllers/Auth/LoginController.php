@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Activity;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
@@ -334,6 +335,12 @@ class LoginController extends ApiController
             'access_token' => $apiToken,
             'user' => $user
         );
+
+        Activity::create([
+            "user_id" => $user->id,
+            "event_type_id" => 16,
+            "description" => "Inicio de sesión de administrador"
+        ]);
 
         return $this->successResponse($data, 200);
     }

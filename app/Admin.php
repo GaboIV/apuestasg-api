@@ -13,6 +13,8 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Model {
     use Notifiable;
 
+    protected $appends = ['photo_url'];
+
     const FEMENINO = 'F';
     const MASCULINO = 'M';
 
@@ -54,5 +56,20 @@ class Admin extends Model {
 
     public function setDoiTypeAttribute($value) {
         $this->attributes['document_number'] = strtoupper($value);
+    }
+
+    public function getPhotoUrlAttribute() {
+    	$file = storage_path("app/admins/" . $this->photo . ".png");
+
+	    if(!file_exists($file)) {
+            if ($this->gender == 'F') {
+                return url("api/images/admins/no-image-f.png");
+            } else {
+                return url("api/images/admins/no-image-m.png");
+            }
+
+	    } else {
+	    	return url("api/images/admins/". $this->photo . ".png");
+	    }
     }
 }
