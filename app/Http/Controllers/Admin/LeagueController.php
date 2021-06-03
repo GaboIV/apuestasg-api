@@ -6,17 +6,92 @@ use App\Game;
 use App\Team;
 use App\League;
 use App\BetType;
-use App\Country;
 use App\Category;
 use App\Competitor;
-use App\Helpers\Functions;
 use App\Jobs\SyncLeagueJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\ApiController;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Requests\Admin\Leagues\LeagueRequest;
 
 class LeagueController extends ApiController
 {
+    public function index()
+    {
+        $keywords = explode(" ", request()->search);
+
+        $leagues = League::where(function($query) use($keywords){
+                    if (request()->search != 'all') {
+                        foreach($keywords as $keyword) {
+                            $query->orWhere('name', 'like', "%$keyword%");
+                            $query->orWhere('name_uk', 'like', "%$keyword%");
+                            $query->orWhere('description', 'like', "%$keyword%");
+                            $query->orWhereHas('country', function (Builder $query) use ($keyword) {
+                                $query->where('name', 'like', "%$keyword%");
+                            });
+                        }
+                    }
+                })
+                ->orderBy('id', 'desc')
+                ->paginate(25);
+
+        return $this->successResponse([
+            'leagues' => $leagues
+        ], 200);
+    }
+
+    public function store(LeagueRequest $request)
+    {
+        $data = $request->all();
+
+        $league = League::create($data);
+
+        return $this->successResponse([
+            'liga' => $league
+        ], 200);
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $team = League::whereId($id)->update($data);
+
+        return $this->successResponse([
+            'status' => 'success'
+        ], 200);
+    }
+
+    public function byCategory(Request $request)
+    {
+        $data = $request->all();
+
+        $query = League::where('name', '!=', null);
+
+        if (isset($request['category_id']) && $request['category_id'] != 0) {
+            $query->whereCategoryId($request['category_id']);
+        }
+
+        if (isset($request['country_id']) && $request['country_id'] != 0) {
+            $query->whereCountryId($request['country_id']);
+        }
+
+        $leagues = $query->get();
+
+        return $this->successResponse([
+            'ligas' => $leagues
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+    }
+
     public function sync($id) {
         $league = League::whereId($id)->first();
 
@@ -197,7 +272,7 @@ class LeagueController extends ApiController
         }
 
         return $this->successResponse([
-            'league' => $league
+            'league' => $league->fresh()
         ], 200);
     }
 

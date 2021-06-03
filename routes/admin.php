@@ -25,11 +25,26 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    // GET USER AUTH
-    Route::get('/me', 'Admin\AdminController@me');
 
-    Route::put('/me/personal-information', 'Admin\AdminController@updatePersonalInformation');
-    Route::put('/me/personal-address', 'Admin\AdminController@updatePersonalAddress');
-    Route::put('/me/account-information', 'Admin\AdminController@updateAccountInformation');
-    Route::put('/me/change-password', 'Admin\AdminController@updatePassword');
+    Route::group(['prefix' => 'me'], function () {
+        // GET USER AUTH
+        Route::get('', 'Admin\AdminController@me');
+        // UPDATE USER INFORMATION
+        Route::put('/personal-information', 'Admin\AdminController@updatePersonalInformation');
+        Route::put('/personal-address', 'Admin\AdminController@updatePersonalAddress');
+        Route::put('/account-information', 'Admin\AdminController@updateAccountInformation');
+        Route::put('/change-password', 'Admin\AdminController@updatePassword');
+    });
+
+    Route::group(['prefix' => 'leagues'], function () {
+        Route::patch('/{id}/attach', 'Admin\LeagueController@attachNameUk');
+        Route::patch('/{id}/dettach', 'Admin\LeagueController@dettachNameUk');
+        Route::post('/category/country', 'Admin\LeagueController@byCategory');
+        Route::post('/{id}/sync', 'Admin\LeagueController@sync');
+        Route::post('/sync48', 'Admin\LeagueController@syncLeagues48');
+        Route::resource('', 'Admin\LeagueController')->except([
+            'create', 'edit'
+        ]);
+    });
+
 });

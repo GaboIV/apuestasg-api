@@ -68,16 +68,16 @@ Route::group(['middleware' => 'auth:api'], function () {
             'create', 'edit'
         ]);
 
-        // Ligas
-        Route::patch('leagues/{id}/attach', 'Admin\LeagueController@attachNameUk');
-        Route::patch('leagues/{id}/dettach', 'Admin\LeagueController@dettachNameUk');
-        Route::post('leagues/category/country', 'Api\LeagueController@byCategory');
-        Route::post('leagues/{id}/sync', 'Admin\LeagueController@sync');
-        Route::post('leagues/sync48', 'Admin\LeagueController@syncLeagues48');
-        Route::resource('leagues', 'Api\LeagueController')->except([
-            'create', 'edit'
-        ]);
-        Route::get('updates', 'Admin\AdminController@loadUpdatesLeagues');
+        Route::group(['prefix' => 'leagues'], function () {
+            Route::patch('/{id}/attach', 'Admin\LeagueController@attachNameUk');
+            Route::patch('/{id}/dettach', 'Admin\LeagueController@dettachNameUk');
+            Route::post('/category/country', 'Admin\LeagueController@byCategory');
+            Route::post('/{id}/sync', 'Admin\LeagueController@sync');
+            Route::post('/sync48', 'Admin\LeagueController@syncLeagues48');
+            Route::resource('', 'Admin\LeagueController')->except([
+                'create', 'edit'
+            ]);
+        });
 
         // Partidos
         Route::put('games/updateOutstanding/{id}', 'Api\GameController@updateOutstanding');

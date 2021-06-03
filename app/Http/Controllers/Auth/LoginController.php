@@ -47,6 +47,8 @@ class LoginController extends ApiController
             $user = Auth::user();
             $apiToken = 'current';
 
+            $user->load('player');
+
             $data = array(
                 'access_token' => $apiToken,
                 'user' => $user,
@@ -278,6 +280,8 @@ class LoginController extends ApiController
                 'link' => 'ver-resultados'
             );
         }
+
+        $user->load('player');
 
         $data = array(
             'access_token' => $apiToken,

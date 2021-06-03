@@ -9,12 +9,12 @@ use App\Category;
 use App\Changelog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ApiController;
-use App\Http\Requests\Admin\PersonalAddressRequest;
-use App\Http\Requests\Admin\AccountInformationRequest;
-use App\Http\Requests\Admin\ChangePasswordRequest;
-use App\Http\Requests\Admin\PersonalInformationRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\ApiController;
+use App\Http\Requests\Admin\Me\ChangePasswordRequest;
+use App\Http\Requests\Admin\Me\PersonalAddressRequest;
+use App\Http\Requests\Admin\Me\AccountInformationRequest;
+use App\Http\Requests\Admin\Me\PersonalInformationRequest;
 
 class AdminController extends ApiController {
 
@@ -110,15 +110,6 @@ class AdminController extends ApiController {
 
         return $this->successResponse([
             'countries' => $countries
-        ], 200);
-    }
-
-    public function loadUpdatesLeagues() {
-        $updates = Category::with("leagues")
-                            ->get();
-
-        return $this->successResponse([
-            'updates' => $updates
         ], 200);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Leagues;
 
 use App\Helpers\Functions;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,7 +27,8 @@ class LeagueRequest extends FormRequest
             'description' => 'descripción',
             'category_id' => 'categoría',
             'country_id' => 'país',
-            'url' => 'Link de ruta'
+            'url' => 'Link de ruta',
+            'match_structure_id' => 'estructura de partidos'
         ];
     }
 
@@ -39,12 +40,13 @@ class LeagueRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:leagues,name',
-            'name_uk' => 'string',
-            'description' => 'string',
-            'category_id' => 'required|numeric',
-            'country_id' => 'required|numeric',
-            'url' => 'nullable|string|unique:leagues,url'
+            'name'                  => 'required|unique:leagues,name',
+            'name_uk'               => 'string',
+            'description'           => 'string',
+            'category_id'           => 'required|numeric|exists:categories,id',
+            'country_id'            => 'required|numeric|exists:countries,id',
+            'url'                   => 'nullable|string|unique:leagues,url',
+            'match_structure_id'    => 'required|numeric|exists:match_structures,id'
         ];
     }
 
@@ -54,5 +56,5 @@ class LeagueRequest extends FormRequest
             'status' => 'error',
             'message' => Functions::getValidatorMessage($validator),
         ], 422));
-    } 
+    }
 }
