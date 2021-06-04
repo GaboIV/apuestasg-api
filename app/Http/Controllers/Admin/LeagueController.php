@@ -258,8 +258,8 @@ class LeagueController extends ApiController
         $league = League::whereId($id)->first();
 
         if (isset($league->name_uk)) {
-            if (! in_array($data['name_uk'], $league->name_uk)){
-                $arrays_name_uk = array_merge($league->name_uk, [$data['name_uk']]);
+            if (! in_array($data['code'], $league->name_uk)){
+                $arrays_name_uk = array_merge($league->name_uk, [$data['code']]);
 
                 $league->update([
                     "name_uk" => $arrays_name_uk
@@ -267,7 +267,7 @@ class LeagueController extends ApiController
             }
         } else {
         	$league->update([
-                "name_uk" => [$data['name_uk']]
+                "name_uk" => [$data['code']]
             ]);
         }
 
@@ -281,18 +281,18 @@ class LeagueController extends ApiController
 
         $league = League::whereId($id)->first();
 
-        if (in_array($data['name_uk'], $league->name_uk)){
+        if (in_array($data['code'], $league->name_uk)){
             $arr = array_filter($league->name_uk, function($v) use ($data) {
-                return $v != $data['name_uk'];
+                return $v != $data['code'];
             });
 
             $league->update([
-                "name_uk" => $arr
+                "name_uk" => array_values($arr)
             ]);
         }
 
         return $this->successResponse([
-            'league' => $league
+            'league' => $league->fresh()
         ], 200);
     }
 }
