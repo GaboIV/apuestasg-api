@@ -2,22 +2,23 @@
 
 namespace App;
 
+use App\Traits\ScopeFilterByColumn;
 use Illuminate\Database\Eloquent\Model;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 
-class League extends Model 
+class League extends Model
 {
-    use HasJsonRelationships;
+    use HasJsonRelationships, ScopeFilterByColumn;
 
     protected $appends = ['image'];
-    
+
     protected $fillable = [
-        'name', 
-        'name_uk', 
-        'description', 
-        'url', 
-        'importance', 
-        'country_id', 
+        'name',
+        'name_uk',
+        'description',
+        'url',
+        'importance',
+        'country_id',
         'category_id'
     ];
 
@@ -45,7 +46,7 @@ class League extends Model
         return $this->hasOne(Country::class, 'id', 'country_id');
     }
 
-    public function getImageAttribute() { 
+    public function getImageAttribute() {
         $file = storage_path("app/leagues/" . $this->id . ".png");
 
         if(!file_exists($file)) {
@@ -53,5 +54,17 @@ class League extends Model
         } else {
             return $this->id.".png";
         }
+    }
+
+    public function searchableColumns(): array
+    {
+        return [
+            'id',
+            'name',
+            'name_uk',
+            'category_id',
+            'country_id',
+            'name_uk'
+        ];
     }
 }

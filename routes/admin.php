@@ -47,4 +47,16 @@ Route::group(['middleware' => 'auth:api'], function () {
         ]);
     });
 
+    Route::group(['prefix' => 'categories'], function () {
+        Route::resource('', 'Admin\CategoryController')->only([
+            'index'
+        ]);
+    });
+
+    Route::group(['prefix' => 'countries'], function () {
+        Route::resource('', 'Admin\CountryController')->only([
+            'index'
+        ]);
+    });
+
 });

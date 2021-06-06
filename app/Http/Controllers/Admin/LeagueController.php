@@ -17,28 +17,10 @@ use App\Http\Requests\Admin\Leagues\LeagueRequest;
 
 class LeagueController extends ApiController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $keywords = explode(" ", request()->search);
-
-        $leagues = League::where(function($query) use($keywords){
-                    if (request()->search != 'all') {
-                        foreach($keywords as $keyword) {
-                            $query->orWhere('name', 'like', "%$keyword%");
-                            $query->orWhere('name_uk', 'like', "%$keyword%");
-                            $query->orWhere('description', 'like', "%$keyword%");
-                            $query->orWhereHas('country', function (Builder $query) use ($keyword) {
-                                $query->where('name', 'like', "%$keyword%");
-                            });
-                        }
-                    }
-                })
-                ->orderBy('id', 'desc')
-                ->paginate(25);
-
-        return $this->successResponse([
-            'leagues' => $leagues
-        ], 200);
+        $leagues = League::filterByColumns($request->all())->paginate(20);
+        return $this->successResponse($leagues, 200);
     }
 
     public function store(LeagueRequest $request)
