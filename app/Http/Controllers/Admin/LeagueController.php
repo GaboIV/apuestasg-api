@@ -19,7 +19,9 @@ class LeagueController extends ApiController
 {
     public function index(Request $request)
     {
-        $leagues = League::filterByColumns($request->all())->paginate(20);
+        $leagues = League::filterByColumns($request->all())
+        ->orderBy('id', 'desc')->paginate(20);
+
         return $this->successResponse($leagues, 200);
     }
 
@@ -29,9 +31,7 @@ class LeagueController extends ApiController
 
         $league = League::create($data);
 
-        return $this->successResponse([
-            'liga' => $league
-        ], 200);
+        return $this->successResponse($league, 200);
     }
 
     public function show($id)

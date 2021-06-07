@@ -41,12 +41,12 @@ class LeagueRequest extends FormRequest
     {
         return [
             'name'                  => 'required|unique:leagues,name',
-            'name_uk'               => 'string',
-            'description'           => 'string',
+            'name_uk'               => '',
+            'description'           => '',
             'category_id'           => 'required|numeric|exists:categories,id',
             'country_id'            => 'required|numeric|exists:countries,id',
             'url'                   => 'nullable|string|unique:leagues,url',
-            'match_structure_id'    => 'required|numeric|exists:match_structures,id'
+            'match_structure_id'    => ''
         ];
     }
 
