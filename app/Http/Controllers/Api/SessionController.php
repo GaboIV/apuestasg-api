@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Game;
 use App\Team;
+use App\User;
 use App\Selection;
 use App\Competitor;
 use App\Inscription;
@@ -367,7 +368,10 @@ class SessionController extends ApiController
         $menu = [];
 
         if ($request->tipoken == 'token') {
-            $user = Auth::user();
+            $auth_user = Auth::user();
+
+            $user = User::where('id', $auth_user->id)->with('player')->first();
+
             $apiToken = 'current';
         } else {
         	return $this->errorResponse("Acción no permitida.", 403);
@@ -551,6 +555,8 @@ class SessionController extends ApiController
                 'link' => 'ver-resultados'
             );
         }
+
+        $user->load('player');
 
         $data = array(
             'access_token' => $apiToken,

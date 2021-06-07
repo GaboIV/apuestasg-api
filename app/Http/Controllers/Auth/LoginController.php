@@ -44,10 +44,10 @@ class LoginController extends ApiController
         $menu = [];
 
         if ($request->tipoken == 'token') {
-            $user = Auth::user();
+            $auth_user = Auth::user();
             $apiToken = 'current';
 
-            $user->load('player');
+            $user = User::where('id', $auth_user->id)->with('player')->first();
 
             $data = array(
                 'access_token' => $apiToken,
