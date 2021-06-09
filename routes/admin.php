@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::resource('', 'Admin\LeagueController')->except([
             'create', 'edit'
         ]);
+        Route::put('/{id}', 'Admin\LeagueController@update');
     });
 
     Route::group(['prefix' => 'categories'], function () {

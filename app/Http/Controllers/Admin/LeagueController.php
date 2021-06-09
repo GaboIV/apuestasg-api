@@ -42,7 +42,7 @@ class LeagueController extends ApiController
     {
         $data = $request->all();
 
-        $team = League::whereId($id)->update($data);
+        League::whereId($id)->update($data);
 
         return $this->successResponse([
             'status' => 'success'
