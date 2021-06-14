@@ -49,9 +49,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     });
 
     Route::group(['prefix' => 'categories'], function () {
-        Route::resource('', 'Admin\CategoryController')->only([
-            'index'
+        Route::resource('', 'Admin\CategoryController')->except([
+            'create', 'edit'
         ]);
+        Route::put('/{id}', 'Admin\CategoryController@update');
     });
 
     Route::group(['prefix' => 'countries'], function () {

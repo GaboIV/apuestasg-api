@@ -19,11 +19,11 @@ trait ScopeFilterByColumn
     }
 
     public function scopeFilterByColumn($query, $key, $value, $column = null) {
-        if (is_null($column)) 
+        if (is_null($column))
         {
             // $query->where($key, 'like', "%$value%");
-            $query->whereRaw('UPPER(' . $key . ') LIKE ? ',[trim(strtoupper($value)).'%']);
-        } else 
+            $query->whereRaw('UPPER(' . $key . ') LIKE ? ', ['%' . trim(strtoupper($value)) . '%']);
+        } else
         {
             if (is_callable($column)) {
 
@@ -69,7 +69,7 @@ trait ScopeFilterByColumn
                         $query->whereHas($relation, function (Builder $queryA) use ($condition, $value, $columnName) {
                             $queryA->where($columnName, $condition, $value);
                         });
-                    }                    
+                    }
                 }
             }
         }
