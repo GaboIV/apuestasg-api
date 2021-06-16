@@ -11,7 +11,8 @@ class CountryController extends ApiController
     public function index(Request $request)
     {
         if (request()->page) {
-            $countries = Country::paginate(request()->page);
+            $countries = Country::filterByColumns($request->all())
+            ->orderBy('id', 'desc')->paginate(20);
         } else {
             $countries = Country::all();
         }
