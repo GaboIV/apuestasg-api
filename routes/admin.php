@@ -55,6 +55,22 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::put('/{id}', 'Admin\CategoryController@update');
     });
 
+    Route::group(['prefix' => 'bet-types'], function () {
+        Route::resource('', 'Admin\BetTypeController')->except([
+            'create', 'edit'
+        ]);
+        Route::put('/{id}', 'Admin\BetTypeController@update');
+    });
+
+    Route::group(['prefix' => 'match-structures'], function () {
+        Route::patch('/{id}/delete-main-bet-type', 'Admin\MatchStructureController@dettachMainBetType');
+        Route::patch('/{id}/add-main-bet-type', 'Admin\MatchStructureController@attachMainBetType');
+        Route::resource('', 'Admin\MatchStructureController')->except([
+            'create', 'edit'
+        ]);
+        Route::put('/{id}', 'Admin\MatchStructureController@update');
+    });
+
     Route::group(['prefix' => 'countries'], function () {
         Route::resource('', 'Admin\CountryController')->only([
             'index'
