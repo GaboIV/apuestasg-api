@@ -12,7 +12,13 @@ class MatchStructure extends Model
 
     protected $fillable = [
         'category_id',
+        'division_number',
+        'division_name_singular',
+        'division_name_plural',
+        'annotation_name_plural',
+        'annotation_name_singular',
         'principal',
+        'type',
         'main_bet_types'
     ];
 

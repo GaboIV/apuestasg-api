@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\BetType;
+use App\MatchStructure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Admin\Categories\CategoryRequest;
-use App\MatchStructure;
+use App\Http\Requests\Admin\MatchStructures\MatchStructureRequest;
 
 class MatchStructureController extends ApiController
 {
@@ -25,8 +26,19 @@ class MatchStructureController extends ApiController
         ], 200);
     }
 
-    public function store(CategoryRequest $request)
+    public function store(MatchStructureRequest $request)
     {
+        $data = $request->validated();
+
+        $data['principal'] = false;
+
+        if (!MatchStructure::where('category_id', $data['category_id'])->first()) {
+            $data['principal'] = true;
+        }
+
+        $match_structure = MatchStructure::create($data);
+
+        return $this->successResponse($match_structure, 200);
     }
 
     public function show($id)
