@@ -77,4 +77,11 @@ Route::group(['middleware' => 'auth:api'], function () {
         ]);
     });
 
+    Route::group(['prefix' => 'banks'], function () {
+        Route::resource('', 'Admin\BankController')->except([
+            'create', 'edit'
+        ]);
+        Route::put('/{id}', 'Admin\BankController@update');
+    });
+
 });
