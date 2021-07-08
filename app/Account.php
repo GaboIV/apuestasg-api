@@ -3,12 +3,15 @@
 namespace App;
 
 use App\Bank;
+use App\Traits\ScopeFilterByColumn;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    use ScopeFilterByColumn;
+
 	protected $with = ["bank"];
-	
+
     const AHORRO = 'Ahorro';
     const CORRIENTE = 'Corriente';
 
@@ -18,6 +21,16 @@ class Account extends Model
         return $this->belongsTo(Bank::class, 'bank_id', 'id');
     }
 
-
-    
+    public function searchableColumns(): array
+    {
+        return [
+            'id',
+            'name',
+            'number',
+            'document',
+            'email',
+            'type',
+            'bank_id'
+        ];
+    }
 }
