@@ -50,7 +50,11 @@ class GeneralController extends ApiController {
                 $juegos = 0;
                 $juegos = Game::where('games.start', '>=', date("Y-m-d H:i"))
                 ->where('games.start', '<=', $fecha_manana)
-                ->where('leagues.category_id', $category[$i]['id'])
+                // ->where('leagues.category_id', $category[$i]['id'])
+                ->whereHas('league', function ($query) use ($category, $i) {
+                    $query->where('category_id',  $category[$i]['id']);
+                    $query->where('importance', '>', 0);
+                })
                 ->join('leagues', 'games.league_id', '=', 'leagues.id')
                 ->select('games.*')
                 ->count();
@@ -88,7 +92,7 @@ class GeneralController extends ApiController {
         ->with('teams.country')
         ->whereHas('league', function ($query) use ($id) {
             $query->where('category_id', $id);
-            $query->orderBy('importance', 'desc');
+            $query->where('importance', '>', 0);
         })
         ->join('leagues', 'games.league_id', '=', 'leagues.id')
         ->select('games.*', 'leagues.name', 'leagues.importance')

@@ -386,10 +386,13 @@ class GameController extends ApiController
 
         if (isset($data['category_id']) || isset($data['country_id'])) {
             $query->whereHas('league', function ($queryL) use ($data) {
-            	if (isset($data['category_id']) && $data['category_id'] != 0) 
+            	if (isset($data['category_id']) && $data['category_id'] != 0) {
 			    	$queryL->where('category_id', '=', $data['category_id']);
-			    if (isset($data['country_id']) && $data['country_id'] != 0) 
+                }
+
+			    if (isset($data['country_id']) && $data['country_id'] != 0) {
 			    	$queryL->where('country_id', '=', $data['country_id']);
+                }
 			});
         }
 
@@ -404,8 +407,8 @@ class GameController extends ApiController
 
         if (isset($data['name']) && $data['name'] != '' && $data['name'] != 'todos' && $data['name'] != 'todas') {
         	$query->whereHas('teams', function ($queryC) use ($data) {
-            	$queryC->Where('name', 'ILIKE', "%" . $data['name'] . "%");
-                $queryC->orWhere('name_id', 'ILIKE', "%" . $data['name'] . "%");
+            	$queryC->Where('name', 'like', "%" . $data['name'] . "%");
+                $queryC->orWhere('name_id', 'like', "%" . $data['name'] . "%");
 			});
         }
 
