@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Role;
 use App\User;
 use App\Assist;
 use App\Player;
 use App\Transaction;
 use App\Configuration;
 use App\Jobs\SendRegisterMailJob;
+use Spatie\Permission\Models\Role;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Controllers\ApiController;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -46,7 +46,7 @@ class RegisterController extends ApiController
      */
     protected function createPlayer(PlayerRequest $request)
     {
-        $data = $request->validated();  
+        $data = $request->validated();
 
         $data['ip'] = '';
         $host= $_SERVER["HTTP_HOST"];
@@ -75,24 +75,24 @@ class RegisterController extends ApiController
 
         $uniqueUser = Player::where('document_number', $data['document_number'])
                           ->where('document_type', $data['document_type'])
-                          ->first();  
+                          ->first();
 
-        if ($uniqueUser) 
+        if ($uniqueUser)
             return $this->errorResponse("Ya existe un usuario con este tipo y número de documento", 409);
 
         $user = User::create($data);
 
         if (isset($data['bonus']) && $data['bonus'] == "ENTRADA_100K_AG")
             $data['available'] = 100000;
-        else 
+        else
             $data['available'] = 0;
 
         $data['birthday'] = date("Y-m-d", strtotime($data['birthday']));
 
         // Relación Usuario-Rol. Jugador por defecto.
         $user->roles()->attach(Role::where('name', 'player')->first());
-        
-        $user->player()->create($data); 
+
+        $user->player()->create($data);
 
         $player = $user->player;
 
@@ -103,7 +103,7 @@ class RegisterController extends ApiController
             $mstatus = "Tiene un regalo de Bs. 100.000,00 para que disfrute de la pasión de las apuestas.";
         else
             $mstatus = "Gracias por registrarte en Apuestas G";
-        
+
         $cod_serial = substr(md5(rand()),0,32);
 
         $admin_email = Configuration::whereGroup('EMAIL')->whereSubgroup('REGISTER')->first()->value;
@@ -116,9 +116,11 @@ class RegisterController extends ApiController
             "player_id" => $player->id,
             "type" => "register"
         ]);
-    
-        $this->dispatch(new SendRegisterMailJob($user, $player, $admin_email, $assist->id));
-       
+
+        $bonus = Configuration::whereGroup('BONUS')->whereSubgroup('REGISTER')->first()->value ?? 0;
+
+        $this->dispatch(new SendRegisterMailJob($user, $player, $admin_email, $assist->id, $bonus));
+
         if (isset($data['bonus']) && $data['bonus'] == "ENTRADA_100K_AG") {
             $transaction = Transaction::create([
                 "event_type_id" => 4,
@@ -126,7 +128,7 @@ class RegisterController extends ApiController
                 "amount" => 100000,
                 "player_balance" => 100000
             ]);
-        }    
+        }
 
         $result = array(
             "status" => $status,
@@ -149,7 +151,7 @@ class RegisterController extends ApiController
                         $ip = $_SERVER['HTTP_CLIENT_IP'];
                 }
             }
-            $purpose    = str_replace(array("name", "\n", "\t", " ", "-", "_"), NULL, strtolower(trim($purpose)));
+            $purpose    = str_replace(array("name", "\n", "\t", " ", "-", "_"), [], strtolower(trim($purpose)));
             $support    = array("country", "countrycode", "state", "region", "city", "location", "address");
             $continents = array(
                 "AF" => "Africa",
@@ -160,7 +162,7 @@ class RegisterController extends ApiController
                 "NA" => "North America",
                 "SA" => "South America"
             );
-            
+
             if (filter_var($ip, FILTER_VALIDATE_IP) && in_array($purpose, $support)) {
                 $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
                 if (@strlen(trim($ipdat->geoplugin_countryCode)) == 2) {
@@ -202,8 +204,8 @@ class RegisterController extends ApiController
                 }
             }
             return $output;
-        } 
+        }
 
 
-    
+
 }

@@ -10,12 +10,13 @@ use Illuminate\Queue\SerializesModels;
 class NotificationRegisterAdminMail extends Mailable
 {
     use Queueable, SerializesModels;
-  
+
     public $admin_email;
     public $player;
     public $assist_id;
     public $user;
-   
+    public $bonus;
+
     /**
      * Create a new message instance.
      *
@@ -28,7 +29,7 @@ class NotificationRegisterAdminMail extends Mailable
         $this->user = $user;
         $this->assist_id = $assist_id;
     }
-   
+
     /**
      * Build the message.
      *

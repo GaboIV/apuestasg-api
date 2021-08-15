@@ -21,6 +21,7 @@ class SendRegisterMailJob implements ShouldQueue
     protected $player;
     protected $admin_email;
     protected $assist_id;
+    protected $bonus;
 
     /**
      * Create a new job instance.
@@ -29,13 +30,13 @@ class SendRegisterMailJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($user, $player, $admin_email, $assist_id)
+    public function __construct($user, $player, $admin_email, $assist_id, $bonus)
     {
         $this->user = $user->toArray();
         $this->player = $player->toArray();
         $this->admin_email = $admin_email;
         $this->assist_id = $assist_id;
-
+        $this->bonus = $bonus;
     }
 
     /**
@@ -46,11 +47,11 @@ class SendRegisterMailJob implements ShouldQueue
     public function handle()
     {
         Mail::to($this->user['email'])
-            ->send(new NotificationRegisterPlayerMail($this->player, $this->assist_id));
+            ->send(new NotificationRegisterPlayerMail($this->player, $this->assist_id, $this->bonus));
 
         if (isset($this->admin_email)) {
             Mail::to($this->admin_email)
             ->send(new NotificationRegisterAdminMail($this->admin_email, $this->player, $this->user, $this->assist_id));
-        }        
+        }
     }
 }

@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +13,7 @@
 </style>
 </head>
 <body style="margin: 0; padding: 0;">
-	<table border="0" cellpadding="0" cellspacing="0" width="100%">	
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
 		<tr>
 			<td style="padding: 10px 0 30px 0;">
 				<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
@@ -27,7 +27,7 @@
 							<table border="0" cellpadding="0" cellspacing="0" width="100%">
 								<!-- <tr>
 									<td style="font-size: 12px; color: grey;">* Sujeto a condiciones<br><br></td>
-									
+
 								</tr> -->
 								<tr>
 									<td >
@@ -37,14 +37,12 @@
 								</tr>
 								<tr>
 									<td style="padding: 20px 0 20px 0; color: #153643; font-family: Google Sans, sans-serif; font-size: 14px;">
-	                                    Es muy sencillo, <?php echo $player['name'] ?>: <br><br>
-	                                    Te hemos otorgado un bono de <b>Bs. 200.000,00</b> para que pruebes la emoción de ganar junto a nosotros. Y además acumules puntos de bonus, con éstos vas a poder canjear a futuro por grandes premios.<br><br>
+	                                    Va a ser muy sencillo, <?php echo $player['name'] ?>: <br><br>
+	                                    Estaremos verificando tus datos registrados y en caso de ser correctos, se te otorgará un bono de: <b>Bs. <?php echo $bonus ?></b> para que pruebes la emoción de ganar junto a nosotros. Te notificaremos por correo.<br><br>
 
-	                                    <a href="https://www.apuestasg.win" style="color:#007cf7 !important;">Haz clic aquí para obtener más información sobre los puntos de bonus.</a><br><br>
-
-	                                    <div style="background: radial-gradient(ellipse at bottom, #035280 0%, #041e42 77%); padding: 10px 15px; width: 40%; color: white; font-size: 18px; font-family: Google Sans, sans-serif; text-align: center;">
-	                                    	¡Juega ya con nosotros!                                    	
-	                                    </div><br><br>
+	                                    <a href="https://www.apuestasg.win" style="color:#007cf7 !important;"><div style="background: radial-gradient(ellipse at bottom, #035280 0%, #041e42 77%); padding: 10px 15px; width: 40%; color: white; font-size: 18px; font-family: Google Sans, sans-serif; text-align: center;">
+	                                    	¡Juega ya con nosotros!
+	                                    </div></a><br><br>
 	                                    Saludos,<br>
 	                                    <a href="https://www.apuestasg.win" style="color:#007cf7 !important; font-size: 16px;">Equipo de Apuestas G</a>
 									</td>
@@ -58,7 +56,7 @@
 											<td align="right"><a href="https://www.apuestasg.win" style="color:#007cf7 !important;">¿Has olvidado tu contraseña?</a></td>
 										</tr>
 									</table>
-									</td>								
+									</td>
 								</tr>
 							</table>
 						</td>
