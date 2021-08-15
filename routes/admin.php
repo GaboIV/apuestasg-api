@@ -90,4 +90,10 @@ Route::group(['middleware' => 'auth:api'], function () {
         ]);
         Route::put('/{id}', 'Admin\AccountController@update');
     });
+
+    Route::group(['prefix' => 'players'], function () {
+        Route::resource('', 'Admin\PlayerController')->only([
+            'index'
+        ]);
+    });
 });
