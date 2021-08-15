@@ -119,7 +119,7 @@ class SyncCareersJob implements ShouldQueue
                     "surface" => $surface ?? null,
                     "status" => 1,
                     "grade" => null,
-                    "purse" => $trk->purse,
+                    "purse" => intval($trk->purse),
                     "age_restriction" => $trk->ageRestrictionDescription ?? null,
                     "sex_restriction" => $trk->sexRestrictionDescription ?? null,
                     "record" => null

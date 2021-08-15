@@ -16,10 +16,10 @@ class TeamController extends ApiController {
         ->where(function($query) use($criterios){
             if (request()->criterio != 'todos') {
                 foreach($criterios as $keyword) {
-                    $query->orWhere('name', 'ILIKE', "%$keyword%");
-                    $query->orWhere('name_id', 'ILIKE', "%$keyword%");
+                    $query->orWhere('name', 'like', "%$keyword%");
+                    $query->orWhere('name_id', 'like', "%$keyword%");
                 }
-            }                    
+            }
         })->orderBy('id', 'desc');
 
         if (request()->league_id != 'todas') {
@@ -29,7 +29,7 @@ class TeamController extends ApiController {
                 $query->where('leagues.id', $league_id);
             });
         }
-        
+
         $teams = $query_teams->paginate(25);
 
         return $this->successResponse([
@@ -38,7 +38,7 @@ class TeamController extends ApiController {
     }
 
     public function byLeague($id) {
-        $teams = Team::whereHas('leagues', function ($query) use ($id) {               
+        $teams = Team::whereHas('leagues', function ($query) use ($id) {
                         $query->where('league_id', $id);
                     })
                     ->get();
